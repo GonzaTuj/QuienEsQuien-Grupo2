@@ -1,0 +1,15 @@
+﻿@using QEQ.Models
+@model Usuario
+@{
+    ViewBag.Title = "QUIEN ES QUIEN | Iniciar Sesión ";
+}
+<link rel="stylesheet" type="text/css" href="estilo.css" />
+<h1>Iniciar Sesión</h1>
+@using (Html.BeginForm("VerificarLogin", "BackOffice", FormMethod.Post))
+{
+    <p>Usuario: @Html.TextBoxFor(x => x.NombreUsuario) </p><br /> @Html.ValidationMessageFor(x => x.NombreUsuario)
+    <p>Contraseña: @Html.TextBoxFor((x => x.Password), new { type = "password" }) </p><br /> @Html.ValidationMessageFor(x => x.Password)
+    <input id="button" type="submit" value="Ingresar">
+    @ViewBag.Advertencia
+}
+
