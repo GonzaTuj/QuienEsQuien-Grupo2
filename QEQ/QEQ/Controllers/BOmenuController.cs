@@ -15,15 +15,15 @@ namespace WebApplication1.Controllers
         }
         public ActionResult ABMCarac()
         {
-            return ABMCarac();
+            return View();
         }
         public ActionResult ABMCateg()
         {
-            return ABMCateg();
+            return View();
         }
         public ActionResult ABMPers()
         {
-            return ABMPers();
+            return View();
         }
 
     }
