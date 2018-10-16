@@ -20,10 +20,8 @@ namespace QEQ.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult AboutEInstrucciones()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

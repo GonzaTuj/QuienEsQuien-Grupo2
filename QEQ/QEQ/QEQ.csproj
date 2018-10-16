@@ -155,6 +155,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AboutInstrucciones.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -188,13 +189,20 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+=======
+>>>>>>> cf61106d813049d7df55e5d9cfcb43dbfa466edd
     <Content Include="Views\BOmenu\ABMCarac.cshtml" />
     <Content Include="Views\BOmenu\ABMCateg.cshtml" />
     <Content Include="Views\BOmenu\ABMPers.cshtml" />
     <Content Include="Views\BOmenu\Index.cshtml" />
+<<<<<<< HEAD
+=======
+    <Content Include="Views\Home\AboutEInstrucciones.cshtml" />
+>>>>>>> cf61106d813049d7df55e5d9cfcb43dbfa466edd
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
