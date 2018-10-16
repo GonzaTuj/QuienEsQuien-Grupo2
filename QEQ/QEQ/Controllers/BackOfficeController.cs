@@ -23,8 +23,7 @@ namespace QEQ.Controllers
         [HttpPost]
         public ActionResult VerificarLogin(Usuario x)
         {
-
-            if ((x.NombreUsuario != "") && (x.Password != ""))
+            if (ModelState.IsValid)
             {
                 Usuario NuevoUsuario = new Usuario();
                 NuevoUsuario = Conexion.ObtenerUsuario(x.NombreUsuario, x.Password, "InicioSesion");
@@ -35,8 +34,11 @@ namespace QEQ.Controllers
                     else
                         return View("Home");
                 }
+                else
+                {
+                    ViewBag.Advertencia = "Usuario invalido. El Nombre o la Contraseña es incorrecto.";
+                }
             }
-            ViewBag.Advertencia = "Usuario invalido.";
             return View("Login");
         }
     
@@ -48,7 +50,7 @@ namespace QEQ.Controllers
         [HttpPost]
         public ActionResult VerificarRegistro(Usuario x)
         {
-            if ((x.NombreUsuario != "") && (x.Password != ""))
+            if (ModelState.IsValid)
             {
                 Usuario NuevoUsuario = new Usuario();
                 NuevoUsuario = Conexion.ObtenerUsuario(x.NombreUsuario, x.Password, "Registro");
