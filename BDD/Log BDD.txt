@@ -1,0 +1,4 @@
+10.128.0.16 servidor de ort sql
+sql server auth
+
+QEQC02
