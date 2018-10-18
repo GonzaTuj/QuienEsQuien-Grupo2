@@ -32,6 +32,7 @@ namespace QEQ.Models
                     Consulta.CommandType = System.Data.CommandType.StoredProcedure;
                     Consulta.Parameters.AddWithValue("@nombre", Usuario);
                     Consulta.Parameters.AddWithValue("@password", Password);
+                    Consulta.Parameters.AddWithValue("@accion", Accion);
                     SqlDataReader dataReader = Consulta.ExecuteReader();
                     while (dataReader.Read())
                     {
@@ -70,7 +71,7 @@ namespace QEQ.Models
         public static int InsertarUsuario (Usuario Usuario)
         {
             int regsAfectados = 0; 
-            if (Usuario.NombreUsuario == "")
+            if (Usuario.NombreUsuario != "")
             {
                 SqlConnection Conexion = Conectar();
                 SqlCommand Consulta = Conexion.CreateCommand();

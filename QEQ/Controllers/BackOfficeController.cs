@@ -36,7 +36,7 @@ namespace QEQ.Controllers
                 }
                 else
                 {
-                    ViewBag.Advertencia = "Usuario invalido. El Nombre o la Contraseña es incorrecto.";
+                    ViewBag.Advertencia = "Usuario invalido.";
                 }
             }
             return View("Login");

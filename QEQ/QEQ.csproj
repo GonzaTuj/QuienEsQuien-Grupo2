@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D66CDE32-A07C-4F54-9F6C-FD68305EED25}</ProjectGuid>
+    <ProjectGuid>{B1CA1735-A1C9-4876-A7B9-51481CBC4259}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -147,11 +147,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-<<<<<<< HEAD
     <Compile Include="Controllers\BackOfficeController.cs" />
-=======
-    <Compile Include="Controllers\BOmenuController.cs" />
->>>>>>> b33234317752acbaa5bb23e3eb1710abc575a265
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -161,7 +157,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\AboutInstrucciones.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -172,8 +167,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ApplicationInsights.config" />
-    <None Include="Scripts\jquery-3.3.1-vsdoc.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -195,29 +192,15 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-<<<<<<< HEAD
-    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Instrucciones.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\BackOffice\Login.cshtml" />
     <Content Include="Views\BackOffice\Registro.cshtml" />
-=======
-=======
->>>>>>> cf61106d813049d7df55e5d9cfcb43dbfa466edd
-    <Content Include="Views\BOmenu\ABMCarac.cshtml" />
-    <Content Include="Views\BOmenu\ABMCateg.cshtml" />
-    <Content Include="Views\BOmenu\ABMPers.cshtml" />
-    <Content Include="Views\BOmenu\Index.cshtml" />
-<<<<<<< HEAD
-=======
-    <Content Include="Views\Home\AboutEInstrucciones.cshtml" />
->>>>>>> cf61106d813049d7df55e5d9cfcb43dbfa466edd
->>>>>>> b33234317752acbaa5bb23e3eb1710abc575a265
+    <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\QEQ\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -248,9 +231,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>56834</DevelopmentServerPort>
+          <DevelopmentServerPort>61099</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56834/</IISUrl>
+          <IISUrl>http://localhost:61099/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

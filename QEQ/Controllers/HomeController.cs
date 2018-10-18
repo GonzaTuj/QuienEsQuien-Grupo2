@@ -4,27 +4,27 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WebApplication1.Controllers
+namespace QEQ.Controllers
 {
-    public class BOmenuController : Controller
+    public class HomeController : Controller
     {
-        // GET: BOmenu
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult ABMCarac()
+
+        public ActionResult About()
         {
-            return View();
-        }
-        public ActionResult ABMCateg()
-        {
-            return View();
-        }
-        public ActionResult ABMPers()
-        {
+            ViewBag.Message = "Your application description page.";
+
             return View();
         }
 
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }
