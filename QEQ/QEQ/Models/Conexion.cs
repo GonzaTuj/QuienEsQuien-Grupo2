@@ -82,5 +82,23 @@ namespace QEQ.Models
             }
             return regsAfectados;
         }
+
+	public static int InsertarPersonaje(Personaje personaje)
+        {
+            int regsAfectados = 0;
+
+            if (personaje.Nombre != "" && personaje.Categoria != 0)
+            {
+                SqlConnection conexion = Conectar();
+                SqlCommand Consulta = conexion.CreateCommand();
+                Consulta.CommandText = "sp_insertarPersonaje";
+                Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+
+                Consulta.Parameters.AddWithValue("@Nom", personaje.Nombre);
+                Consulta.Parameters.AddWithValue("@Cat", personaje.Categoria);
+                regsAfectados = Consulta.ExecuteNonQuery();
+            }
+            return regsAfectados;
+        }
     }
 }
