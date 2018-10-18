@@ -147,10 +147,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+<<<<<<< HEAD
+    <Compile Include="Controllers\BackOfficeController.cs" />
+=======
+    <Compile Include="Controllers\BOmenuController.cs" />
+>>>>>>> b33234317752acbaa5bb23e3eb1710abc575a265
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Conexion.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -189,16 +196,33 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\BackOffice\Login.cshtml" />
+    <Content Include="Views\BackOffice\Registro.cshtml" />
+=======
+=======
+>>>>>>> cf61106d813049d7df55e5d9cfcb43dbfa466edd
     <Content Include="Views\BOmenu\ABMCarac.cshtml" />
     <Content Include="Views\BOmenu\ABMCateg.cshtml" />
     <Content Include="Views\BOmenu\ABMPers.cshtml" />
     <Content Include="Views\BOmenu\Index.cshtml" />
+<<<<<<< HEAD
+=======
     <Content Include="Views\Home\AboutEInstrucciones.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Home\About.cshtml" />
+=======
+>>>>>>> cf61106d813049d7df55e5d9cfcb43dbfa466edd
+>>>>>>> b33234317752acbaa5bb23e3eb1710abc575a265
+>>>>>>> 9e346ba0586332dfae43cb61cac959fb3a615fc6
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\QEQ\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
