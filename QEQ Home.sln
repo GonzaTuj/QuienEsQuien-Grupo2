@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QEQ Houm", "QEQ Houm\QEQ Houm.csproj", "{B8A53CF8-E81B-4B81-9196-C895755CFB3B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8A53CF8-E81B-4B81-9196-C895755CFB3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A53CF8-E81B-4B81-9196-C895755CFB3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A53CF8-E81B-4B81-9196-C895755CFB3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A53CF8-E81B-4B81-9196-C895755CFB3B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FF672EB1-68C8-42E8-BA1B-EDB111FCCCBF}
+	EndGlobalSection
+EndGlobal
