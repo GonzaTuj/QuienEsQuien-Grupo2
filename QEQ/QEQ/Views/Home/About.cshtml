@@ -1,45 +1,22 @@
-﻿
-@{
-    ViewBag.Title = "About";
+﻿@{
+    ViewBag.Title = "QUIEN ES QUIEN | Iniciar Sesión ";
 }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/estilo.css")" />
+<a href=@Url.Action("Index", "Home") class="button">Atras</a>
 
-<a href=@Url.Action("Inicio","Home") class="btn btn-success">Atras</a>
+<h1>Sobre Nosotros</h1>
+<article>
+    <p>
+        Bienvenido al juego <em>Quien es Quien</em>! Nuestro equipo está conformado por:
+        <ul>
+            <li>Aldana Allones</li>
+            <li>Axel Geslin</li>
+            <li>Lisa Natan</li>
+            <li>Gonzalo Tujcher</li>
+        </ul><br />
+        Esperamos que te diviertas jugando al igual que nos divertimos desarrollando!
+        Muchas gracias.
+    </p>
 
-
-<!DOCTYPE HTML>
-<head>
-    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
-    <title></title>
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            background-color: silver;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .recuadro {
-            border: 1px solid black;
-            width: 75%;
-            display: inline-block;
-            height: 75%;
-            overflow: hidden;
-        }
-
-
-    </style>
-</head>
-<body>
-    <div class='recuadro' id="uno">
-
-        <img src=~/Content/AboutInstrucciones2.png border="0" width="100%" height="100%">
-
-</body>
-</html>
+</article>

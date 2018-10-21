@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Boogaloo|Lobster');
+
+body {
+    background-color: deepskyblue;
+}
+
+article {
+    padding: 20px 30px;
+    background-color: gold;
+    box-shadow: 4px 4px 4px #aaa;
+    border-style: solid;
+    border-width: thin;
+}
+
+h1 {
+    font-family: 'Lobster', cursive;
+    text-align: center;
+    text-shadow: 4px 4px 4px #aaa;
+}
+
+h2 {
+    font-family: 'Boogaloo', cursive;
+    text-align: center;
+    text-shadow: 4px 4px 4px #aaa;
+}
+
+p {
+    font-family: 'Boogaloo', cursive;
+}
+
+.button {
+    padding: 20px 30px;
+    border: rgb(128,128,128) 1px;
+    font-size: 8pt;
+    font-family: 'Boogaloo', cursive;
+    background-color: rgb(65, 221, 254);
+}
