@@ -35,3 +35,68 @@ p {
     font-family: 'Boogaloo', cursive;
     background-color: rgb(65, 221, 254);
 }
+
+.row {
+    position: relative;
+    float: left;
+    left: 797px;
+    width: 323px;
+    margin-bottom: 5px;
+}
+
+.item1 {
+    position: relative;
+    float: left;
+    left: 0px;
+    width: 77px;
+    height: 77px;
+}
+
+.item2 {
+    position: relative;
+    float: left;
+    left: 5px;
+    width: 77px;
+    height: 77px;
+}
+
+.item3 {
+    position: relative;
+    float: left;
+    left: 10px;
+    width: 77px;
+    height: 77px;
+}
+
+.item4 {
+    position: relative;
+    float: left;
+    left: 15px;
+    width: 77px;
+    height: 77px;
+}
+
+.item5 {
+    position: relative;
+    float: left;
+    left: 20px;
+    width: 77px;
+    height: 77px;
+}
+
+.item6 {
+    position: relative;
+    float: left;
+    left: 25px;
+    width: 77px;
+    height: 77px;
+}
+
+.item7 {
+    position: relative;
+    float: left;
+    left: 30px;
+    width: 77px;
+    height: 77px;
+}
+

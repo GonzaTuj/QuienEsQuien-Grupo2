@@ -16,6 +16,12 @@ namespace QEQ.Controllers
             return View();
         }
 
+        public ActionResult ABMCategoriaC()
+        {
+            ViewBag.ListaCaracteristicas = Conexion.ListarCategoriaC();
+            return View();
+        }
+
         [HttpPost]
         public ActionResult EdicionCaracteristica(string Accion, int ID = 0)
         {
@@ -58,6 +64,51 @@ namespace QEQ.Controllers
                         break;
                 }
                 return View("FormCaracteristica", x);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EdicionCategoriaC(string Accion, int ID = 0)
+        {
+            ViewBag.Enabled = new { };
+            ViewBag.Accion = Accion;
+            if (Accion == "Insertar")
+            {
+                return View("FormCaracteristica");
+            }
+            if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
+            {
+                if ((Accion == "Ver") || (Accion == "Eliminar"))
+                    ViewBag.Enabled = new { disabled = "disabled" };
+                CategoriaCaracteristica x = Conexion.ObtenerCategoriaC(ID);
+                return View("FormCategoriaC", x);
+            }
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult GrabarCategoriaC(CategoriaCaracteristica x, string Accion)
+        {
+            ViewBag.Accion = Accion;
+            if (!ModelState.IsValid)
+            {
+                return View("FormCategoriaC", x);
+            }
+            else
+            {
+                switch (Accion)
+                {
+                    case "Insertar":
+                        Conexion.InsertarCategoriaC(x);
+                        break;
+                    case "Editar":
+                        Conexion.ModificarCategoriaC(x);
+                        break;
+                    case "Eliminar":
+                        Conexion.EliminarCategoriaC(x.ID);
+                        break;
+                }
+                return View("FormCategoriaC", x);
             }
         }
     }

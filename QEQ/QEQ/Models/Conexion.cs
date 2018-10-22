@@ -139,6 +139,7 @@ namespace QEQ.Models
             int regsAfectados = Consulta.ExecuteNonQuery();
             return regsAfectados;
         }
+
         public static int ModificarCaracteristica(Caracteristica c)
         {
             SqlConnection Conexion = Conectar();
@@ -152,11 +153,86 @@ namespace QEQ.Models
             int regsAfectados = Consulta.ExecuteNonQuery();
             return regsAfectados;
         }
+
         public static int EliminarCaracteristica(int ID)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "EliminarCaracteristica";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@id", ID);
+            int regsAfectados = Consulta.ExecuteNonQuery();
+            return regsAfectados;
+        }
+
+        public static List<CategoriaCaracteristica> ListarCategoriaC()
+        {
+            List<CategoriaCaracteristica> CategoriasCaracteristicas = new List<CategoriaCaracteristica>();
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "ObtenerCategoriaC";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@id", null);
+            SqlDataReader dataReader = Consulta.ExecuteReader();
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt32(dataReader["Id"]);
+                string nombre = dataReader["Nombre"].ToString();
+                CategoriaCaracteristica cc = new CategoriaCaracteristica(id, nombre);
+                CategoriasCaracteristicas.Add(cc);
+            }
+            Desconectar(Conexion);
+            return CategoriasCaracteristicas;
+        }
+
+        public static CategoriaCaracteristica ObtenerCategoriaC(int ID)
+        {
+            CategoriaCaracteristica cc = new CategoriaCaracteristica(0, "");
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "ObtenerCategoriaC";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@id", ID);
+            SqlDataReader dataReader = Consulta.ExecuteReader();
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt32(dataReader["Id"]);
+                string nombre = dataReader["Nombre"].ToString();
+                cc = new CategoriaCaracteristica(id, nombre);
+            }
+            Desconectar(Conexion);
+            return cc;
+        }
+
+        public static int InsertarCategoriaC(CategoriaCaracteristica cc)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "InsertarCategoriaC";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@id", cc.ID);
+            Consulta.Parameters.AddWithValue("@nombre", cc.Nombre);
+            int regsAfectados = Consulta.ExecuteNonQuery();
+            return regsAfectados;
+        }
+
+        public static int ModificarCategoriaC(CategoriaCaracteristica cc)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "ModificarCategoriaC";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@id", cc.ID);
+            Consulta.Parameters.AddWithValue("@nombre", cc.Nombre);
+            int regsAfectados = Consulta.ExecuteNonQuery();
+            return regsAfectados;
+        }
+
+        public static int EliminarCategoriaC(int ID)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "EliminarCategoriaC";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
             Consulta.Parameters.AddWithValue("@id", ID);
             int regsAfectados = Consulta.ExecuteNonQuery();
