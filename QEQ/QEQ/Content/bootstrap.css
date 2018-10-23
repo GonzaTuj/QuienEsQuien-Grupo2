@@ -5,17 +5,17 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,700,900');
 
 html {
-  font-family: sans-serif;
-  -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 body {
-    margin: 0;
-    
+  margin: 0;
 }
 article,
 aside,
@@ -1087,11 +1087,11 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #333;
-    background-color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
 }
 input,
 button,
@@ -1302,10 +1302,9 @@ p {
     font-family: 'Poppins', sans-serif;
 }
 @media (min-width: 768px) {
-    .lead {
-        font-size: 21px;
-        
-    }
+  .lead {
+    font-size: 21px;
+  }
 }
 small,
 .small {
@@ -1605,10 +1604,9 @@ pre code {
   }
 }
 @media (min-width: 1200px) {
-    .container {
-        width: 1170px;
-        
-    }
+  .container {
+    width: 1170px;
+  }
 }
 .container-fluid {
   padding-right: 15px;
@@ -4149,11 +4147,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs-justified > .active > a,
 .nav-tabs-justified > .active > a:hover,
 .nav-tabs-justified > .active > a:focus {
-  border: 1px solid #fff;
+  border: 1px solid #ddd;
 }
 @media (min-width: 768px) {
   .nav-tabs-justified > li > a {
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
     border-radius: 4px 4px 0 0;
   }
   .nav-tabs-justified > .active > a,
@@ -4185,10 +4183,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 @media (min-width: 768px) {
-    .navbar-header {
-        float: left;
-        
-    }
+  .navbar-header {
+    float: left;
+  }
 }
 .navbar-collapse {
   padding-right: 15px;
@@ -4288,7 +4285,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
-
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -4509,7 +4505,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
-  color: #fff;
+  color: #777;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
@@ -4517,10 +4513,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 .navbar-default .navbar-text {
-  color: #fff;
+  color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #fff;
+  color: #777;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
@@ -4968,10 +4964,10 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
-    font-family: 'Lobster', cursive;
     text-align: center;
     border-style: dotted;
     border-color: #edd015;
+    font-family: 'Lobster', cursive;
 }
 .jumbotron h1,
 .jumbotron .h1 {

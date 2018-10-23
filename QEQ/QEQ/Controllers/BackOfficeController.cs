@@ -18,7 +18,7 @@ namespace QEQ.Controllers
 
         public ActionResult ABMCategoriaC()
         {
-            ViewBag.ListaCaracteristicas = Conexion.ListarCategoriaC();
+            ViewBag.ListaCategoriasC = Conexion.ListarCategoriaC();
             return View();
         }
 

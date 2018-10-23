@@ -8,15 +8,12 @@ namespace QEQ.Models
 {
     public class Caracteristica
     {
-        [Required(ErrorMessage = "Campo obligatorio.")]
         private int _ID;
-        [Required(ErrorMessage = "Campo obligatorio.")]
         private string _Nombre;
-        [Required(ErrorMessage = "Campo obligatorio.")]
         private int _IDCategoria;
-        [Required(ErrorMessage = "Campo obligatorio.")]
         private string _Pregunta;
 
+        [Required(ErrorMessage = "Campo obligatorio.")]
         public int ID
         {
             get
@@ -30,6 +27,7 @@ namespace QEQ.Models
             }
         }
 
+        [Required(ErrorMessage = "Campo obligatorio.")]
         public string Nombre
         {
             get
@@ -43,6 +41,7 @@ namespace QEQ.Models
             }
         }
 
+        [Required(ErrorMessage = "Campo obligatorio.")]
         public int IDCategoria
         {
             get
@@ -56,6 +55,7 @@ namespace QEQ.Models
             }
         }
 
+        [Required(ErrorMessage = "Campo obligatorio.")]
         public string Pregunta
         {
             get

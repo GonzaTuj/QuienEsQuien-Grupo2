@@ -32,6 +32,7 @@ namespace QEQ.Models
                     Consulta.CommandType = System.Data.CommandType.StoredProcedure;
                     Consulta.Parameters.AddWithValue("@nombre", Usuario);
                     Consulta.Parameters.AddWithValue("@password", Password);
+                    Consulta.Parameters.AddWithValue("@accion", Accion);
                     SqlDataReader dataReader = Consulta.ExecuteReader();
                     while (dataReader.Read())
                     {
@@ -41,25 +42,19 @@ namespace QEQ.Models
 
                         if (Accion == "InicioSesion")
                         {
-                            if ((nombre == Usuario) && (password == Password))
-                            {
                                 NuevoUsuario.NombreUsuario = nombre;
                                 NuevoUsuario.Password = password;
                                 NuevoUsuario.EsAdmin = esAdmin;
                                 Desconectar(Conexion);
                                 return NuevoUsuario;
-                            }
                         }
 
                         if (Accion == "Registro")
                         {
-                            if (nombre == Usuario)
-                            {
                                 NuevoUsuario.NombreUsuario = nombre;
                                 NuevoUsuario.Password = password;
                                 NuevoUsuario.EsAdmin = esAdmin;
                                 return NuevoUsuario;
-                            }
                         }
                     }
                     Desconectar(Conexion);
@@ -70,7 +65,7 @@ namespace QEQ.Models
         public static int InsertarUsuario (Usuario Usuario)
         {
             int regsAfectados = 0; 
-            if (Usuario.NombreUsuario == "")
+            if (Usuario.NombreUsuario != "")
             {
                 SqlConnection Conexion = Conectar();
                 SqlCommand Consulta = Conexion.CreateCommand();
@@ -84,19 +79,19 @@ namespace QEQ.Models
         }
 
         public static List<Caracteristica> ListarCaracteristica()
-        {
+        { 
             List<Caracteristica> Caracteristicas = new List<Caracteristica>();
             SqlConnection Conexion = Conectar();
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "ObtenerCaracteristica";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            Consulta.Parameters.AddWithValue("@id", null);
+            Consulta.Parameters.AddWithValue("@id", "");
             SqlDataReader dataReader = Consulta.ExecuteReader();
             while (dataReader.Read())
             {
-                int id = Convert.ToInt32(dataReader["Id"]);
+                int id = Convert.ToInt32(dataReader["IdCaract"]);
                 string nombre = dataReader["Nombre"].ToString();
-                int idcategoria = Convert.ToInt32(dataReader["IDCategoria"]);
+                int idcategoria = Convert.ToInt32(dataReader["fkCategoria"]);
                 string pregunta = dataReader["Pregunta"].ToString();
                 Caracteristica c = new Caracteristica(id, nombre, idcategoria, pregunta);
                 Caracteristicas.Add(c);
@@ -116,9 +111,9 @@ namespace QEQ.Models
             SqlDataReader dataReader = Consulta.ExecuteReader();
             while (dataReader.Read())
             {
-                int id = Convert.ToInt32(dataReader["Id"]);
+                int id = Convert.ToInt32(dataReader["IdCaract"]);
                 string nombre = dataReader["Nombre"].ToString();
-                int idcategoria = Convert.ToInt32(dataReader["IDCategoria"]);
+                int idcategoria = Convert.ToInt32(dataReader["fkCategoria"]);
                 string pregunta = dataReader["Pregunta"].ToString();
                 c = new Caracteristica(id, nombre, idcategoria, pregunta);
             }
@@ -132,10 +127,9 @@ namespace QEQ.Models
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "InsertarCaracteristica";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            Consulta.Parameters.AddWithValue("@id", c.ID);
-            Consulta.Parameters.AddWithValue("@nombre", c.Nombre);
-            Consulta.Parameters.AddWithValue("@idcategoria", c.IDCategoria);
-            Consulta.Parameters.AddWithValue("@pregunta", c.Pregunta);
+            Consulta.Parameters.AddWithValue("@Nombre", c.Nombre);
+            Consulta.Parameters.AddWithValue("@fkCategoria", c.IDCategoria);
+            Consulta.Parameters.AddWithValue("@Pregunta", c.Pregunta);
             int regsAfectados = Consulta.ExecuteNonQuery();
             return regsAfectados;
         }
@@ -146,10 +140,10 @@ namespace QEQ.Models
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "ModificarCaracteristica";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            Consulta.Parameters.AddWithValue("@id", c.ID);
-            Consulta.Parameters.AddWithValue("@nombre", c.Nombre);
-            Consulta.Parameters.AddWithValue("@idcategoria", c.IDCategoria);
-            Consulta.Parameters.AddWithValue("@pregunta", c.Pregunta);
+            Consulta.Parameters.AddWithValue("@idCaract", c.ID);
+            Consulta.Parameters.AddWithValue("@Nombre", c.Nombre);
+            Consulta.Parameters.AddWithValue("@fkCategoria", c.IDCategoria);
+            Consulta.Parameters.AddWithValue("@Pregunta", c.Pregunta);
             int regsAfectados = Consulta.ExecuteNonQuery();
             return regsAfectados;
         }
@@ -160,7 +154,7 @@ namespace QEQ.Models
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "EliminarCaracteristica";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            Consulta.Parameters.AddWithValue("@id", ID);
+            Consulta.Parameters.AddWithValue("@idCaract", ID);
             int regsAfectados = Consulta.ExecuteNonQuery();
             return regsAfectados;
         }
@@ -172,7 +166,7 @@ namespace QEQ.Models
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "ObtenerCategoriaC";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            Consulta.Parameters.AddWithValue("@id", null);
+            Consulta.Parameters.AddWithValue("@id", "");
             SqlDataReader dataReader = Consulta.ExecuteReader();
             while (dataReader.Read())
             {
@@ -210,8 +204,7 @@ namespace QEQ.Models
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "InsertarCategoriaC";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            Consulta.Parameters.AddWithValue("@id", cc.ID);
-            Consulta.Parameters.AddWithValue("@nombre", cc.Nombre);
+            Consulta.Parameters.AddWithValue("@NombreCatCar", cc.Nombre);
             int regsAfectados = Consulta.ExecuteNonQuery();
             return regsAfectados;
         }
@@ -222,8 +215,8 @@ namespace QEQ.Models
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "ModificarCategoriaC";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            Consulta.Parameters.AddWithValue("@id", cc.ID);
-            Consulta.Parameters.AddWithValue("@nombre", cc.Nombre);
+            Consulta.Parameters.AddWithValue("@IDcatCar", cc.ID);
+            Consulta.Parameters.AddWithValue("@NombreCatCar", cc.Nombre);
             int regsAfectados = Consulta.ExecuteNonQuery();
             return regsAfectados;
         }
@@ -234,7 +227,7 @@ namespace QEQ.Models
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "EliminarCategoriaC";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            Consulta.Parameters.AddWithValue("@id", ID);
+            Consulta.Parameters.AddWithValue("@IDCat", ID);
             int regsAfectados = Consulta.ExecuteNonQuery();
             return regsAfectados;
         }

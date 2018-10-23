@@ -4,23 +4,25 @@
 @{
     ViewBag.Title = "ABMCATEGORIAC | Listado";
 }
-
+<link rel="stylesheet" type="text/css" href="~/Content/estilo.css" />
 <h1>Categoria Caracteristica</h1>
 
-<div class="row">
-    <div class="item1">ID</div>
-    <div class="item2">Nombre</div>
-</div>
 @Html.ActionLink("Nueva Categoria", "EdicionCaractegoriaC", "BackOffice", new { Accion = "Insertar", ID = 0 }, null)
-@{
-    foreach (CategoriaCaracteristica cc in ViewBag.ListaCaracteristicas)
+
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th width="200"></th>
+        <th width="200"></th>
+        <th width="200"></th>
+    </tr>
+    @foreach (CategoriaCaracteristica cc in ViewBag.ListaCategoriasC)
     {
-        <div class="row">
-            <div class="item1">@cc.ID</div>
-            <div class="item2">@cc.Nombre</div>
-            <div class="item3">@Html.ActionLink("Editar", "EdicionCategoriaC", "BackOffice", new { Accion = "Editar", ID = @cc.ID }, null)</div>
-            <div class="item4">@Html.ActionLink("Ver", "EdicionCategoriaC", "BackOffice", new { Accion = "Ver", ID = @cc.ID }, null)</div>
-            <div class="item5">@Html.ActionLink("Eliminar", "EdicionCategoriaC", "BackOffice", new { Accion = "Eliminar", ID = @cc.ID }, null)</div>
-        </div>
+        <tr>
+            <td>@cc.Nombre</td>
+            <td>@Html.ActionLink("Editar", "EdicionCategoriaC", "BackOffice", new { Accion = "Editar", ID = @cc.ID }, null)</td>
+            <td>@Html.ActionLink("Ver", "EdicionCategoriaC", "BackOffice", new { Accion = "Ver", ID = @cc.ID }, null)</td>
+            <td>@Html.ActionLink("Eliminar", "EdicionCategoriaC", "BackOffice", new { Accion = "Eliminar", ID = @cc.ID }, null)</td>
+        </tr>
     }
-}
+</table>

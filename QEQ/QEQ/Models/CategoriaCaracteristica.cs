@@ -8,11 +8,11 @@ namespace QEQ.Models
 {
     public class CategoriaCaracteristica
     {
-        [Required(ErrorMessage = "Campo obligatorio.")]
+       
         private int _ID;
-        [Required(ErrorMessage = "Campo obligatorio.")]
         private string _Nombre;
 
+        [Required(ErrorMessage = "Campo obligatorio.")]
         public int ID
         {
             get
@@ -26,6 +26,7 @@ namespace QEQ.Models
             }
         }
 
+        [Required(ErrorMessage = "Campo obligatorio.")]
         public string Nombre
         {
             get

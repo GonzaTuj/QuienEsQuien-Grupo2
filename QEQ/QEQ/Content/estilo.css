@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Boogaloo|Lobster');
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700,900');
 
 body {
-    background-color: deepskyblue;
+    background-color: white;
 }
 
 article {
     padding: 20px 30px;
-    background-color: gold;
+    background-color: #edd015;
     box-shadow: 4px 4px 4px #aaa;
     border-style: solid;
     border-width: thin;
@@ -19,84 +20,44 @@ h1 {
 }
 
 h2 {
-    font-family: 'Boogaloo', cursive;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
     text-shadow: 4px 4px 4px #aaa;
 }
 
 p {
-    font-family: 'Boogaloo', cursive;
+    font-family: 'Poppins', sans-serif;
 }
 
 .button {
     padding: 20px 30px;
-    border: rgb(128,128,128) 1px;
+    border: 1px;
     font-size: 8pt;
-    font-family: 'Boogaloo', cursive;
-    background-color: rgb(65, 221, 254);
+    font-family: 'Poppins', sans-serif;
+    background-color: #06949b;
 }
 
-.row {
-    position: relative;
-    float: left;
-    left: 797px;
-    width: 323px;
-    margin-bottom: 5px;
+.button:hover {
+    padding: 20px 30px;
+    border: 1px;
+    font-size: 8pt;
+    font-family: 'Poppins', sans-serif;
+    background-color: #09bec6;
 }
 
-.item1 {
-    position: relative;
-    float: left;
-    left: 0px;
-    width: 77px;
-    height: 77px;
+table {
+    border-spacing: 5px;
 }
 
-.item2 {
-    position: relative;
-    float: left;
-    left: 5px;
-    width: 77px;
-    height: 77px;
+table, td, th {
+    border: 1px solid black;
+    border-collapse: collapse;
 }
 
-.item3 {
-    position: relative;
-    float: left;
-    left: 10px;
-    width: 77px;
-    height: 77px;
+th, td {
+    padding: 15px;
 }
 
-.item4 {
-    position: relative;
-    float: left;
-    left: 15px;
-    width: 77px;
-    height: 77px;
+th {
+    text-align: left;
 }
-
-.item5 {
-    position: relative;
-    float: left;
-    left: 20px;
-    width: 77px;
-    height: 77px;
-}
-
-.item6 {
-    position: relative;
-    float: left;
-    left: 25px;
-    width: 77px;
-    height: 77px;
-}
-
-.item7 {
-    position: relative;
-    float: left;
-    left: 30px;
-    width: 77px;
-    height: 77px;
-}
-

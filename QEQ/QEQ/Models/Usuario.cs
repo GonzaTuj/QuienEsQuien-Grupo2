@@ -8,13 +8,12 @@ namespace QEQ.Models
 {
     public class Usuario
     {
-        [Required(ErrorMessage = "Campo obligatorio.")]
         private string _NombreUsuario;
-        [Required(ErrorMessage = "Campo obligatorio.")]
         private string _Password;
         private bool _EsAdmin;
-        private int _Monedas; 
+        private int _Monedas;
 
+        [Required(ErrorMessage = "Campo obligatorio.")]
         public string NombreUsuario
         {
             get
@@ -28,6 +27,7 @@ namespace QEQ.Models
             }
         }
 
+        [Required(ErrorMessage = "Campo obligatorio.")]
         public string Password
         {
             get

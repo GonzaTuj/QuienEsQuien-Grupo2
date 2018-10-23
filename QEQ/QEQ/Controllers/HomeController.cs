@@ -39,7 +39,7 @@ namespace QEQ_Houm.Controllers
         public ActionResult VerificarLogin(Usuario x)
         {
             if (ModelState.IsValid)
-            {
+            {   
                 Usuario NuevoUsuario = new Usuario();
                 NuevoUsuario = Conexion.ObtenerUsuario(x.NombreUsuario, x.Password, "InicioSesion");
                 if ((NuevoUsuario.NombreUsuario != "") && (NuevoUsuario.Password != ""))
@@ -47,14 +47,14 @@ namespace QEQ_Houm.Controllers
                     if (NuevoUsuario.EsAdmin == true)
                         return View("HomeAdmin");
                     else
-                        return View("Home");
+                        return View("Index");
                 }
                 else
                 {
                     ViewBag.Advertencia = "Usuario invalido. El Nombre o la Contraseña es incorrecto.";
                 }
             }
-            return View("Login");
+            return View("Login", x);
         }
 
         public ActionResult Registro()

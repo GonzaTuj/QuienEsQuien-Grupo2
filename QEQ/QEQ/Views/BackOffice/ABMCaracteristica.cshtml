@@ -2,29 +2,31 @@
 @model Caracteristica
 
 @{
-ViewBag.Title = "ABMCARACTERISTICA | Listado";
+    ViewBag.Title = "ABMCARACTERISTICA | Listado";
 }
-
+<link rel="stylesheet" type="text/css" href="~/Content/estilo.css" />
 <h1>Caracteristica</h1>
-
-<div class="row">
-    <div class="item1">ID</div>
-<div class="item2">Nombre</div>
-<div class="item3">ID Categoria</div>
-<div class="item4">Pregunta</div>
-</div>
 @Html.ActionLink("Nueva Caracteristica", "EdicionCaracteristica", "BackOffice", new { Accion = "Insertar", ID = 0 }, null)
-@{
-    foreach (Caracteristica c in ViewBag.ListaCaracteristicas)
-    {
-        <div class="row">
-            <div class="item1">@c.ID</div>
-            <div class="item2">@c.Nombre</div>
-            <div class="item3">@c.IDCategoria</div>
-            <div class="item4">@c.Pregunta</div>
-            <div class="item5">@Html.ActionLink("Editar", "EdicionCaracteristica", "BackOffice", new { Accion = "Editar", ID = @c.ID }, null)</div>
-            <div class="item6">@Html.ActionLink("Ver", "EdicionCaracteristica", "BackOffice", new { Accion = "Ver", ID = @c.ID }, null)</div>
-            <div class="item7">@Html.ActionLink("Eliminar", "EdicionCaracteristica", "BackOffice", new { Accion = "Eliminar", ID = @c.ID }, null)</div>
-        </div>
-    }
-}
+
+<table>
+    <tr>
+        <th width="200">Nombre</th>
+        <th width="200">ID Categoria</th>
+        <th width="200">Pregunta</th>
+        <th width="200"></th>
+        <th width="200"></th>
+        <th width="200"></th>
+    </tr>
+    @foreach (Caracteristica c in ViewBag.ListaCaracteristicas)
+        {
+        <tr>
+            <td>@c.Nombre</td>
+            <td>@c.IDCategoria</td>
+            <td>@c.Pregunta</td>
+            <td>@Html.ActionLink("Editar", "EdicionCaracteristica", "BackOffice", new { Accion = "Editar", ID = @c.ID }, null)</td>
+            <td>@Html.ActionLink("Ver", "EdicionCaracteristica", "BackOffice", new { Accion = "Ver", ID = @c.ID }, null)</td>
+            <td>@Html.ActionLink("Eliminar", "EdicionCaracteristica", "BackOffice", new { Accion = "Eliminar", ID = @c.ID }, null)</td>
+        </tr>    
+        }
+</table>
+
