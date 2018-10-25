@@ -22,6 +22,13 @@ namespace QEQ.Controllers
             return View();
         }
 
+        public ActionResult ABMPersonajes()
+        {
+            ViewBag.ListaPersonajes = Conexion.ListarPersonajes();
+            return View();
+        }
+
+
         [HttpPost]
         public ActionResult EdicionCaracteristica(string Accion, int ID = 0)
         {
