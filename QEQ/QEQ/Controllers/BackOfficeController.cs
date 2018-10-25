@@ -19,7 +19,15 @@ namespace QEQ.Controllers
         public ActionResult ABMCategoriaC()
         {
             ViewBag.ListaCategoriasC = Conexion.ListarCategoriaC();
+                return View();
+        }
+
+        public ActionResult HomeAdmin()
+        {
+            var user = Session["Usuario"] as Usuario;
+            if (user.EsAdmin)
             return View();
+            else return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]

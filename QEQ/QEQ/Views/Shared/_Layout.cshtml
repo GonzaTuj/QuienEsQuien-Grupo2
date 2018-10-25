@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title QUIEN ES QUIEN</title>
+    @using QEQ.Models
+    @model Usuario
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -18,12 +20,18 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Home", "Index", "Home", new { area = "" }, 
-                        new { @class = "navbar-brand", @style="color: white; " })
+                        new { @class = "navbar-brand", @style="color: white" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Registrarme", "Registro", "Home",null, new { @class="Menu" })</li>
-                    <li>@Html.ActionLink("Iniciar Sesión", "LogIn", "Home", null, new { @class = "Menu" })</li>
+                    <li>@Html.ActionLink("Iniciar Sesión", "LogIn", "Home", null, new { @class = "Menu", @style = "color: white" })</li>
+                    <li>@Html.ActionLink("Registrarme", "Registro", "Home", null, new { @class = "Menu", @style = "color: white" })</li>
+                    <li>@Html.LabelFor((x => x.NombreUsuario), (object)ViewBag.Enabled))</li>
+                    <li>@Html.LabelFor((x => x.Monedas), (object)ViewBag.Enabled))</li>
+                </ul>
+                <img src="~/Content/Logo6.png" />
+                <ul>
+                    <li>@Html.ActionLink("Cerrar Sesión", "LogOut", "Home", null, new { @class = "Menu", @style = "color: white" })</li>
                 </ul>
             </div>
         </div>
@@ -31,8 +39,6 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-       
-       
     </div>
 
     @Scripts.Render("~/bundles/jquery")
@@ -52,5 +58,4 @@
         color: #edd015;
         text-decoration: none;
     }
-
 </style>

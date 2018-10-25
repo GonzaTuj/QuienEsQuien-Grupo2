@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using QEQ.Models; 
+using QEQ.Models;
 
 namespace QEQ_Houm.Controllers
 {
@@ -24,7 +24,6 @@ namespace QEQ_Houm.Controllers
             return View();
         }
 
-
         public ActionResult Jugar()
         {
             return View();
@@ -32,7 +31,7 @@ namespace QEQ_Houm.Controllers
 
         public ActionResult Login()
         {
-            return View();
+           return View();
         }
 
         [HttpPost]
@@ -44,10 +43,12 @@ namespace QEQ_Houm.Controllers
                 NuevoUsuario = Conexion.ObtenerUsuario(x.NombreUsuario, x.Password, "InicioSesion");
                 if ((NuevoUsuario.NombreUsuario != "") && (NuevoUsuario.Password != ""))
                 {
+                    Session["Usuario"] = NuevoUsuario;
+
                     if (NuevoUsuario.EsAdmin == true)
-                        return View("HomeAdmin");
+                        return RedirectToAction("HomeAdmin", "BackOffice");
                     else
-                        return View("Index");
+                        return View("Index", x);
                 }
                 else
                 {
@@ -59,7 +60,7 @@ namespace QEQ_Houm.Controllers
 
         public ActionResult Registro()
         {
-            return View();
+           return View(); 
         }
 
         [HttpPost]

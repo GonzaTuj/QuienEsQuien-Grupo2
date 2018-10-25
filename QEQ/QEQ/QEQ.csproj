@@ -206,6 +206,7 @@
     <Content Include="Views\BackOffice\ABMCaracteristica.cshtml" />
     <Content Include="Views\BackOffice\ABMCategoriaC.cshtml" />
     <Content Include="Views\BackOffice\FormCategoriaC.cshtml" />
+    <Content Include="Views\BackOffice\HomeAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
