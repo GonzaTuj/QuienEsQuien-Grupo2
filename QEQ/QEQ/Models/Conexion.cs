@@ -21,6 +21,8 @@ namespace QEQ.Models
             conexion.Close();
         }
 
+
+        //USUARIO
         public static Usuario ObtenerUsuario (string Usuario, string Password, string Accion)
         {
             Usuario NuevoUsuario = new Usuario("","");
@@ -78,6 +80,10 @@ namespace QEQ.Models
             return regsAfectados;
         }
 
+
+
+
+        //CARACTERISTICAS
         public static List<Caracteristica> ListarCaracteristica()
         { 
             List<Caracteristica> Caracteristicas = new List<Caracteristica>();
@@ -100,6 +106,7 @@ namespace QEQ.Models
             return Caracteristicas;
         }
 
+       
         public static Caracteristica ObtenerCaracteristica (int ID)
         {
             Caracteristica c = new Caracteristica(0, "", 0, "");
@@ -159,6 +166,9 @@ namespace QEQ.Models
             return regsAfectados;
         }
 
+
+
+        //CATEGORIAS
         public static List<CategoriaCaracteristica> ListarCategoriaC()
         {
             List<CategoriaCaracteristica> CategoriasCaracteristicas = new List<CategoriaCaracteristica>();
@@ -179,6 +189,7 @@ namespace QEQ.Models
             return CategoriasCaracteristicas;
         }
 
+       
         public static CategoriaCaracteristica ObtenerCategoriaC(int ID)
         {
             CategoriaCaracteristica cc = new CategoriaCaracteristica(0, "");
@@ -231,5 +242,44 @@ namespace QEQ.Models
             int regsAfectados = Consulta.ExecuteNonQuery();
             return regsAfectados;
         }
+
+
+        //PERSONAJES
+        public static List<Personaje> ListarPersonajes()
+        {
+            List<Personaje> personajes = new List<Personaje>();
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "ObtenerPersonaje";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@id", "");
+            SqlDataReader dataReader = Consulta.ExecuteReader();
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt32(dataReader["idPers"]);
+                string nombre = dataReader["Nombre"].ToString();
+                int idcategoria = Convert.ToInt32(dataReader["fkCategoria"]);
+
+                Personaje p = new Personaje(id, nombre, idcategoria);
+                personajes.Add(p);
+            }
+            Desconectar(Conexion);
+            return personajes;
+        }
+
+        public static int ModificarPersonajes(Personaje p)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "ModificarPersonaje";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@id",p.IdPers);
+            Consulta.Parameters.AddWithValue("@Nom", p.Nombre);
+            int regsAfectados = Consulta.ExecuteNonQuery();
+            return regsAfectados;
+        }
+
+
+
     }
 }

@@ -154,7 +154,9 @@
     </Compile>
     <Compile Include="Models\Caracteristica.cs" />
     <Compile Include="Models\CategoriaCaracteristica.cs" />
+    <Compile Include="Models\CategoriaPersonaje.cs" />
     <Compile Include="Models\Conexion.cs" />
+    <Compile Include="Models\Personaje.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -206,7 +208,11 @@
     <Content Include="Views\BackOffice\ABMCaracteristica.cshtml" />
     <Content Include="Views\BackOffice\ABMCategoriaC.cshtml" />
     <Content Include="Views\BackOffice\FormCategoriaC.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\BackOffice\HomeAdmin.cshtml" />
+=======
+    <Content Include="Views\BackOffice\ABMPersonaje.cshtml" />
+>>>>>>> 1ab94545a57beca764a8cf9c5023aef00b2cbc08
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

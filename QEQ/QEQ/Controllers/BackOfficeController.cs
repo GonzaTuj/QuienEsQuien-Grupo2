@@ -30,6 +30,13 @@ namespace QEQ.Controllers
             else return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult ABMPersonajes()
+        {
+            ViewBag.ListaPersonajes = Conexion.ListarPersonajes();
+            return View();
+        }
+
+
         [HttpPost]
         public ActionResult EdicionCaracteristica(string Accion, int ID = 0)
         {
