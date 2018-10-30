@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BBD38175-7676-4AA7-B1A5-02A405656B12}</ProjectGuid>
+    <ProjectGuid>{2C790621-BCD3-4225-83DE-8B39F1BA2292}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -161,11 +161,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\About6.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\estilo.css" />
+    <Content Include="Content\instrucciones6.png" />
+    <Content Include="Content\Logo6.png" />
+    <Content Include="Content\Play6.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -200,19 +204,12 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Instrucciones.cshtml" />
-    <Content Include="Views\Home\Jugar.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Registro.cshtml" />
-    <Content Include="Views\BackOffice\FormCaracteristica.cshtml" />
     <Content Include="Views\BackOffice\ABMCaracteristica.cshtml" />
     <Content Include="Views\BackOffice\ABMCategoriaC.cshtml" />
-    <Content Include="Views\BackOffice\FormCategoriaC.cshtml" />
-<<<<<<< HEAD
-    <Content Include="Views\BackOffice\HomeAdmin.cshtml" />
-=======
     <Content Include="Views\BackOffice\ABMPersonaje.cshtml" />
->>>>>>> 1ab94545a57beca764a8cf9c5023aef00b2cbc08
+    <Content Include="Views\BackOffice\FormCaracteristica.cshtml" />
+    <Content Include="Views\BackOffice\FormCategoriaC.cshtml" />
+    <Content Include="Views\BackOffice\HomeAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -246,9 +243,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52396</DevelopmentServerPort>
+          <DevelopmentServerPort>64485</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52396/</IISUrl>
+          <IISUrl>http://localhost:64485/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

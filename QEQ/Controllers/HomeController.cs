@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using QEQ.Models;
 
-namespace QEQ_Houm.Controllers
+namespace QEQ.Controllers
 {
     public class HomeController : Controller
     {
