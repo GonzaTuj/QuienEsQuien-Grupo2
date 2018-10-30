@@ -25,7 +25,7 @@ namespace QEQ.Models
         //USUARIO
         public static Usuario ObtenerUsuario (string Usuario, string Password, string Accion)
         {
-            Usuario NuevoUsuario = new Usuario("","");
+            Usuario NuevoUsuario = new Usuario("","", 0);
             if ((Usuario != "") && (Password != ""))
                {
                     SqlConnection Conexion = Conectar();
@@ -40,12 +40,14 @@ namespace QEQ.Models
                     {
                         string nombre = dataReader["Usuario"].ToString();
                         string password = dataReader["Contraseña"].ToString();
+                        int monedas = Convert.ToInt32(dataReader["Monedas"]);
                         bool esAdmin = Convert.ToBoolean(dataReader["EsAdministrador"]);
 
                         if (Accion == "InicioSesion")
                         {
                                 NuevoUsuario.NombreUsuario = nombre;
                                 NuevoUsuario.Password = password;
+                                NuevoUsuario.Monedas = monedas; 
                                 NuevoUsuario.EsAdmin = esAdmin;
                                 Desconectar(Conexion);
                                 return NuevoUsuario;

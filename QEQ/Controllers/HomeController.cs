@@ -46,9 +46,9 @@ namespace QEQ.Controllers
                     Session["Usuario"] = NuevoUsuario;
 
                     if (NuevoUsuario.EsAdmin == true)
-                        return RedirectToAction("HomeAdmin", "BackOffice");
+                        return RedirectToAction("HomeAdmin", "BackOffice", NuevoUsuario);
                     else
-                        return View("Index", x);
+                        return View("Index");
                 }
                 else
                 {
@@ -56,6 +56,12 @@ namespace QEQ.Controllers
                 }
             }
             return View("Login", x);
+        }
+
+        public ActionResult VerificarLogout()
+        {
+            Session["Usuario"] = null;
+            return View("Index"); 
         }
 
         public ActionResult Registro()
