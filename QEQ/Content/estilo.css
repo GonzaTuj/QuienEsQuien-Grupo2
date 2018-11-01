@@ -3,6 +3,7 @@
 
 body {
     background-color: white;
+    font-family: 'Poppins', sans-serif;
 }
 
 article {
@@ -25,23 +26,26 @@ h2 {
     text-shadow: 4px 4px 4px #aaa;
 }
 
-body {
+#menulink {
     font-family: 'Poppins', sans-serif;
+    color: white;
+    text-decoration: none;
+    font-size: 8pt;
+}
+
+#menulink:hover {
+    font-weight: bold;
 }
 
 .button {
     padding: 20px 30px;
     border: 1px;
-    font-size: 8pt;
-    font-family: 'Poppins', sans-serif;
     background-color: #06949b;
+    margin: 50px;
+    margin-top: 50px;
 }
 
 .button:hover {
-    padding: 20px 30px;
-    border: 1px;
-    font-size: 8pt;
-    font-family: 'Poppins', sans-serif;
     background-color: #09bec6;
 }
 
