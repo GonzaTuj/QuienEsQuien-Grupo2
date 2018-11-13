@@ -22,6 +22,18 @@ namespace QEQ.Controllers
                 return View();
         }
 
+        public ActionResult ABMCategoriaP()
+        {
+            ViewBag.ListaCategoriaP = Conexion.ListarCategoriaP();
+            return View();
+        }
+
+        public ActionResult ABMPersonajes()
+        {
+            ViewBag.ListaPersonajes = Conexion.ListarPersonaje();
+            return View();
+        }
+
         public ActionResult HomeAdmin()
         {
             var user = Session["Usuario"] as Usuario;
@@ -29,13 +41,6 @@ namespace QEQ.Controllers
             return View();
             else return RedirectToAction("Index", "Home");
         }
-
-        public ActionResult ABMPersonajes()
-        {
-            ViewBag.ListaPersonajes = Conexion.ListarPersonajes();
-            return View();
-        }
-
 
         [HttpPost]
         public ActionResult EdicionCaracteristica(string Accion, int ID = 0)
@@ -89,7 +94,7 @@ namespace QEQ.Controllers
             ViewBag.Accion = Accion;
             if (Accion == "Insertar")
             {
-                return View("FormCaracteristica");
+                return View("FormCategoriaC");
             }
             if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
             {
@@ -124,6 +129,51 @@ namespace QEQ.Controllers
                         break;
                 }
                 return View("FormCategoriaC", x);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EdicionCategoriaP(string Accion, int ID = 0)
+        {
+            ViewBag.Enabled = new { };
+            ViewBag.Accion = Accion;
+            if (Accion == "Insertar")
+            {
+                return View("FormCategoriaP");
+            }
+            if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
+            {
+                if ((Accion == "Ver") || (Accion == "Eliminar"))
+                    ViewBag.Enabled = new { disabled = "disabled" };
+                CategoriaCaracteristica x = Conexion.ObtenerCategoriaC(ID);
+                return View("FormCategoriaP", x);
+            }
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult GrabarCategoriaP(CategoriaPersonaje x, string Accion)
+        {
+            ViewBag.Accion = Accion;
+            if (!ModelState.IsValid)
+            {
+                return View("FormCategoriaP", x);
+            }
+            else
+            {
+                switch (Accion)
+                {
+                    case "Insertar":
+                        Conexion.InsertarCategoriaP(x);
+                        break;
+                    case "Editar":
+                        Conexion.ModificarCategoriaP(x);
+                        break;
+                    case "Eliminar":
+                        Conexion.EliminarCategoriaP(x.ID);
+                        break;
+                }
+                return View("FormCategoriaP", x);
             }
         }
     }
