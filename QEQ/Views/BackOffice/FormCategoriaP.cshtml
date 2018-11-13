@@ -1,0 +1,12 @@
+﻿@using QEQ.Models
+@model CategoriaPersonaje
+@{
+    ViewBag.Title = "ABMCATEGORIAP | Categoria Personaje";
+}
+<h1>Categoria Personaje</h1>
+@using (Html.BeginForm("GrabarCategoriaP", "BackOffice", new { Accion = @ViewBag.Accion }, FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.ID)
+    <p>Nombre: @Html.TextBoxFor((x => x.Nombre), (object)ViewBag.Enabled)) @Html.ValidationMessageFor(x => x.Nombre)</p><br />
+    <input type="submit" value="Enviar" />
+}

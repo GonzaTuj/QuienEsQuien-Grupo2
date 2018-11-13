@@ -21,7 +21,6 @@ namespace QEQ.Models
             conexion.Close();
         }
 
-
         //USUARIO
         public static Usuario ObtenerUsuario (string Usuario, string Password, string Accion)
         {
@@ -82,9 +81,6 @@ namespace QEQ.Models
             return regsAfectados;
         }
 
-
-
-
         //CARACTERISTICAS
         public static List<Caracteristica> ListarCaracteristica()
         { 
@@ -93,13 +89,13 @@ namespace QEQ.Models
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "ObtenerCaracteristica";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            Consulta.Parameters.AddWithValue("@id", "");
+            Consulta.Parameters.AddWithValue("@id", null);
             SqlDataReader dataReader = Consulta.ExecuteReader();
             while (dataReader.Read())
             {
                 int id = Convert.ToInt32(dataReader["IdCaract"]);
                 string nombre = dataReader["Nombre"].ToString();
-                int idcategoria = Convert.ToInt32(dataReader["fkCategoria"]);
+                int idcategoria = Convert.ToInt32(dataReader["FkCategoria"]);
                 string pregunta = dataReader["Pregunta"].ToString();
                 Caracteristica c = new Caracteristica(id, nombre, idcategoria, pregunta);
                 Caracteristicas.Add(c);
@@ -108,7 +104,6 @@ namespace QEQ.Models
             return Caracteristicas;
         }
 
-       
         public static Caracteristica ObtenerCaracteristica (int ID)
         {
             Caracteristica c = new Caracteristica(0, "", 0, "");
@@ -168,9 +163,7 @@ namespace QEQ.Models
             return regsAfectados;
         }
 
-
-
-        //CATEGORIAS
+        //CATEGORIA CARACTERISTICA
         public static List<CategoriaCaracteristica> ListarCategoriaC()
         {
             List<CategoriaCaracteristica> CategoriasCaracteristicas = new List<CategoriaCaracteristica>();
@@ -191,7 +184,6 @@ namespace QEQ.Models
             return CategoriasCaracteristicas;
         }
 
-       
         public static CategoriaCaracteristica ObtenerCategoriaC(int ID)
         {
             CategoriaCaracteristica cc = new CategoriaCaracteristica(0, "");
@@ -243,9 +235,82 @@ namespace QEQ.Models
             return regsAfectados;
         }
 
+        //CATEGORIAS PERSONAJES 
+        public static List<CategoriaPersonaje> ListarCategoriaP()
+        {
+            List<CategoriaPersonaje> CategoriasPersonajes = new List<CategoriaPersonaje>();
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "ObtenerCategoriaP";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@id", "");
+            SqlDataReader dataReader = Consulta.ExecuteReader();
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt32(dataReader["ID"]);
+                string nombre = dataReader["Nombre"].ToString();
+                CategoriaPersonaje cp = new CategoriaPersonaje(id, nombre);
+                CategoriasPersonajes.Add(cp);
+            }
+            Desconectar(Conexion);
+            return CategoriasPersonajes;
+        }
+
+        public static CategoriaPersonaje ObtenerCategoriaP(int ID)
+        {
+            CategoriaPersonaje cp = new CategoriaPersonaje(0, "");
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "ObtenerCategoriaP";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@id", ID);
+            SqlDataReader dataReader = Consulta.ExecuteReader();
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt32(dataReader["ID"]);
+                string nombre = dataReader["Nombre"].ToString();
+                cp = new CategoriaPersonaje(id, nombre);
+            }
+            Desconectar(Conexion);
+            return cp;
+        }
+
+        public static int InsertarCategoriaP(CategoriaPersonaje cp)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "InsertarCategoriaP";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@NombreCatPer", cp.Nombre);
+            int regsAfectados = Consulta.ExecuteNonQuery();
+            return regsAfectados;
+        }
+
+        public static int ModificarCategoriaP(CategoriaPersonaje cp)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "ModificarCategoriaP";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@IDcatPer", cp.ID);
+            Consulta.Parameters.AddWithValue("@NombreCatPer", cp.Nombre);
+            int regsAfectados = Consulta.ExecuteNonQuery();
+            return regsAfectados;
+        }
+
+        public static int EliminarCategoriaP(int ID)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "EliminarCategoriaP";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@IDCat", ID);
+            int regsAfectados = Consulta.ExecuteNonQuery();
+            return regsAfectados;
+        }
 
         //PERSONAJES
-        public static List<Personaje> ListarPersonajes()
+        public static List<Personaje> ListarPersonaje()
         {
             List<Personaje> personajes = new List<Personaje>();
             SqlConnection Conexion = Conectar();
@@ -267,7 +332,11 @@ namespace QEQ.Models
             return personajes;
         }
 
-        public static int ModificarPersonajes(Personaje p)
+        //Obtener
+
+        //Insertar
+
+        public static int ModificarPersonaje(Personaje p)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand Consulta = Conexion.CreateCommand();
@@ -279,6 +348,7 @@ namespace QEQ.Models
             return regsAfectados;
         }
 
+        //Eliminar
 
 
     }
