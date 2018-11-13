@@ -15,6 +15,16 @@ namespace QEQ.Controllers
             ViewBag.ListaCaracteristicas = Conexion.ListarCaracteristica();
             return View();
         }
+        public ActionResult FormCaracteristica()
+        {
+            return View();
+        }
+        public ActionResult FormCategoriaC()
+        {
+            return View();
+        }
+
+
 
         public ActionResult ABMCategoriaC()
         {
@@ -37,7 +47,7 @@ namespace QEQ.Controllers
         }
 
 
-        [HttpPost]
+        
         public ActionResult EdicionCaracteristica(string Accion, int ID = 0)
         {
             ViewBag.Enabled = new { };
@@ -46,17 +56,33 @@ namespace QEQ.Controllers
             {
                 return View("FormCaracteristica");
             }
+
             if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
             {
-                if ((Accion == "Ver") || (Accion == "Eliminar"))
+                if (Accion == "Ver")
+                {
                     ViewBag.Enabled = new { disabled = "disabled" };
-                Caracteristica x = Conexion.ObtenerCaracteristica(ID);
-                return View("FormCaracteristica", x);
+                    Caracteristica x = Conexion.ObtenerCaracteristica(ID);
+                }
+
+                if (Accion == "Editar")
+                {
+                    Caracteristica c = Conexion.ObtenerCaracteristica(ID);
+                    Conexion.ModificarCaracteristica(c);
+                    return View("FormCategoriaCmod");
+                }
+
+                if (Accion == "Eliminar")
+                {
+                    Conexion.EliminarCaracteristica(ID);
+                }
+
+                return RedirectToAction("ABMCaracteristica");
             }
             return View("Index");
         }
 
-        [HttpPost]
+        
         public ActionResult GrabarCaracteristica(Caracteristica x, string Accion)
         {
             ViewBag.Accion = Accion;
@@ -78,30 +104,47 @@ namespace QEQ.Controllers
                         Conexion.EliminarCaracteristica(x.ID);
                         break;
                 }
-                return View("FormCaracteristica", x);
+                return RedirectToAction("ABMCaracteristica");
             }
         }
 
-        [HttpPost]
+       
         public ActionResult EdicionCategoriaC(string Accion, int ID = 0)
         {
+           
             ViewBag.Enabled = new { };
             ViewBag.Accion = Accion;
             if (Accion == "Insertar")
             {
-                return View("FormCaracteristica");
+                return View("FormCategoriaC");
             }
+
             if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
             {
-                if ((Accion == "Ver") || (Accion == "Eliminar"))
+                if (Accion == "Ver")
+                {
                     ViewBag.Enabled = new { disabled = "disabled" };
-                CategoriaCaracteristica x = Conexion.ObtenerCategoriaC(ID);
-                return View("FormCategoriaC", x);
+                    CategoriaCaracteristica x = Conexion.ObtenerCategoriaC(ID);
+                }
+                
+                if (Accion == "Editar")
+                {
+                    CategoriaCaracteristica c = Conexion.ObtenerCategoriaC(ID);
+                    Conexion.ModificarCategoriaC(c);
+                    return View("FormCategoriaCmod");
+                }
+
+                if (Accion == "Eliminar")
+                {
+                  Conexion.EliminarCategoriaC(ID);
+                }
+
+                return RedirectToAction("ABMCategoriaC");
             }
             return View("Index");
         }
 
-        [HttpPost]
+      
         public ActionResult GrabarCategoriaC(CategoriaCaracteristica x, string Accion)
         {
             ViewBag.Accion = Accion;
@@ -123,7 +166,7 @@ namespace QEQ.Controllers
                         Conexion.EliminarCategoriaC(x.ID);
                         break;
                 }
-                return View("FormCategoriaC", x);
+                return RedirectToAction("ABMCategoriaC");
             }
         }
     }

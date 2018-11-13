@@ -222,7 +222,7 @@ namespace QEQ.Models
             return regsAfectados;
         }
 
-        public static int ModificarCategoriaC(CategoriaCaracteristica cc)
+        public static void ModificarCategoriaC(CategoriaCaracteristica cc)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand Consulta = Conexion.CreateCommand();
@@ -230,8 +230,6 @@ namespace QEQ.Models
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
             Consulta.Parameters.AddWithValue("@IDcatCar", cc.ID);
             Consulta.Parameters.AddWithValue("@NombreCatCar", cc.Nombre);
-            int regsAfectados = Consulta.ExecuteNonQuery();
-            return regsAfectados;
         }
 
         public static int EliminarCategoriaC(int ID)
