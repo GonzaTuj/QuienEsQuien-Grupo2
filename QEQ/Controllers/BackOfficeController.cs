@@ -28,7 +28,7 @@ namespace QEQ.Controllers
             return View();
         }
 
-        public ActionResult ABMPersonajes()
+        public ActionResult ABMPersonaje()
         {
             ViewBag.ListaPersonajes = Conexion.ListarPersonaje();
             return View();
@@ -145,7 +145,7 @@ namespace QEQ.Controllers
             {
                 if ((Accion == "Ver") || (Accion == "Eliminar"))
                     ViewBag.Enabled = new { disabled = "disabled" };
-                CategoriaCaracteristica x = Conexion.ObtenerCategoriaC(ID);
+                CategoriaPersonaje x = Conexion.ObtenerCategoriaP(ID);
                 return View("FormCategoriaP", x);
             }
             return View("Index");
@@ -174,6 +174,51 @@ namespace QEQ.Controllers
                         break;
                 }
                 return View("FormCategoriaP", x);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EdicionPersonaje(string Accion, int ID = 0)
+        {
+            ViewBag.Enabled = new { };
+            ViewBag.Accion = Accion;
+            if (Accion == "Insertar")
+            {
+                return View("FormPersonaje");
+            }
+            if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
+            {
+                if ((Accion == "Ver") || (Accion == "Eliminar"))
+                    ViewBag.Enabled = new { disabled = "disabled" };
+                Personaje x = Conexion.ObtenerPersonaje(ID);
+                return View("FormPersonaje", x);
+            }
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult GrabarPersonaje(Personaje x, string Accion)
+        {
+            ViewBag.Accion = Accion;
+            if (!ModelState.IsValid)
+            {
+                return View("FormPersonaje", x);
+            }
+            else
+            {
+                switch (Accion)
+                {
+                    case "Insertar":
+                        Conexion.InsertarPersonaje(x);
+                        break;
+                    case "Editar":
+                        Conexion.ModificarPersonaje(x);
+                        break;
+                    case "Eliminar":
+                        Conexion.EliminarPersonaje(x.IdPers);
+                        break;
+                }
+                return View("FormPersonaje", x);
             }
         }
     }
