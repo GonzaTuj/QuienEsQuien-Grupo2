@@ -332,9 +332,44 @@ namespace QEQ.Models
             return personajes;
         }
 
+<<<<<<< HEAD
         //Obtener
 
         //Insertar
+=======
+        public static Personaje ObtenerPersonaje(int ID)
+        {
+            Personaje p = new Personaje(0, "", 0); 
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "ObtenerPersonaje";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@id", "");
+            SqlDataReader dataReader = Consulta.ExecuteReader();
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt32(dataReader["idPers"]);
+                string nombre = dataReader["Nombre"].ToString();
+                int idcategoria = Convert.ToInt32(dataReader["fkCategoria"]);
+
+                p = new Personaje(id, nombre, idcategoria);
+            }
+            Desconectar(Conexion);
+            return p;
+        }
+
+        public static int InsertarPersonaje(Personaje p)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "InsertarPersonaje";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@Nom", p.Nombre);
+            Consulta.Parameters.AddWithValue("@Cat", p.FkCategoria);
+            int regsAfectados = Consulta.ExecuteNonQuery();
+            return regsAfectados;
+        }
+>>>>>>> f67978544fbcad310b498591e67bbe217a9faf77
 
         public static int ModificarPersonaje(Personaje p)
         {
@@ -348,8 +383,21 @@ namespace QEQ.Models
             return regsAfectados;
         }
 
+<<<<<<< HEAD
         //Eliminar
 
+=======
+        public static int EliminarPersonaje(int ID)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "EliminarPersonaje";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@id", ID);
+            int regsAfectados = Consulta.ExecuteNonQuery();
+            return regsAfectados;
+        }
+>>>>>>> f67978544fbcad310b498591e67bbe217a9faf77
 
     }
 }

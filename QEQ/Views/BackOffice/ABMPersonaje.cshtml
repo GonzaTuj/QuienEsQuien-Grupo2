@@ -1,7 +1,30 @@
-﻿
-@{
-    ViewBag.Title = "ABMPersonaje";
-}
+﻿@using QEQ.Models
+@model Personaje
 
-<h2>ABMPersonaje</h2>
+@{
+    ViewBag.Title = "ABMPERSONAJE | Listado";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/estilo.css" />
+<h1>Personaje</h1>
+@Html.ActionLink("Nuevo Personaje", "EdicionPersonaje", "BackOffice", new { Accion = "Insertar", ID = 0 }, null)
+
+<table>
+    <tr>
+        <th width="200">Nombre</th>
+        <th width="200">ID Categoria</th>
+        <th width="200"></th>
+        <th width="200"></th>
+        <th width="200"></th>
+    </tr>
+    @foreach (Personaje p in ViewBag.ListaPersonajes)
+    {
+        <tr>
+            <td>@p.Nombre</td>
+            <td>@p.FkCategoria</td>
+            <td>@Html.ActionLink("Editar", "EdicionPersonaje", "BackOffice", new { Accion = "Editar", ID = @p.IdPers }, null)</td>
+            <td>@Html.ActionLink("Ver", "EdicionPersonaje", "BackOffice", new { Accion = "Ver", ID = @p.IdPers }, null)</td>
+            <td>@Html.ActionLink("Eliminar", "EdicionPersonaje", "BackOffice", new { Accion = "Eliminar", ID = @p.IdPers }, null)</td>
+        </tr>
+    }
+</table>
 
