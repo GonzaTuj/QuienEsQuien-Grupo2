@@ -146,7 +146,7 @@ namespace QEQ.Models
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
             Consulta.Parameters.AddWithValue("@idCaract", c.ID);
             Consulta.Parameters.AddWithValue("@Nombre", c.Nombre);
-            Consulta.Parameters.AddWithValue("@fkCategoria", c.IDCategoria);
+            Consulta.Parameters.AddWithValue("@FkCategoria", c.IDCategoria);
             Consulta.Parameters.AddWithValue("@Pregunta", c.Pregunta);
             int regsAfectados = Consulta.ExecuteNonQuery();
             return regsAfectados;

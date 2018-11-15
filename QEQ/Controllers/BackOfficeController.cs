@@ -12,41 +12,74 @@ namespace QEQ.Controllers
         // GET: BackOffice
         public ActionResult ABMCaracteristica()
         {
-            ViewBag.ListaCaracteristicas = Conexion.ListarCaracteristica();
-            return View();
+            var user = Session["Usuario"] as Usuario;
+            if (user.EsAdmin)
+            {
+                ViewBag.ListaCaracteristicas = Conexion.ListarCaracteristica();
+                return View();
+            }
+            else return RedirectToAction("Index", "Home");
         }
         public ActionResult FormCaracteristica()
         {
-            return View();
+            var user = Session["Usuario"] as Usuario;
+            if (user.EsAdmin)
+                return View();
+            else return RedirectToAction("Index", "Home");
         }
         public ActionResult FormPersonaje()
         {
-            return View();
+            var user = Session["Usuario"] as Usuario;
+            if (user.EsAdmin)
+                return View();
+            else return RedirectToAction("Index", "Home");
         }
         public ActionResult FormCategoriaC()
         {
-            return View();
+            var user = Session["Usuario"] as Usuario;
+            if (user.EsAdmin)
+                return View();
+            else return RedirectToAction("Index", "Home");
         }
         public ActionResult FormCategoriaP()
         {
-            return View();
+            var user = Session["Usuario"] as Usuario;
+            if (user.EsAdmin)
+                return View();
+            else return RedirectToAction("Index", "Home");
         }
+
         public ActionResult ABMCategoriaC()
         {
-            ViewBag.ListaCategoriasC = Conexion.ListarCategoriaC();
+            var user = Session["Usuario"] as Usuario;
+            if (user.EsAdmin)
+            {
+                ViewBag.ListaCategoriasC = Conexion.ListarCategoriaC();
                 return View();
+            }
+            else return RedirectToAction("Index", "Home");
         }
 
         public ActionResult ABMCategoriaP()
         {
-            ViewBag.ListaCategoriaP = Conexion.ListarCategoriaP();
-            return View();
+            var user = Session["Usuario"] as Usuario;
+            if (user.EsAdmin)
+            {
+                ViewBag.ListaCategoriaP = Conexion.ListarCategoriaP();
+                return View();
+            }
+            else return RedirectToAction("Index", "Home");
         }
 
         public ActionResult ABMPersonaje()
         {
-            ViewBag.ListaPersonajes = Conexion.ListarPersonaje();
-            return View();
+            var user = Session["Usuario"] as Usuario;
+            if (user.EsAdmin)
+            {
+                ViewBag.ListaPersonajes = Conexion.ListarPersonaje();
+                return View();
+            }
+            else return RedirectToAction("Index", "Home");
         }
 
         public ActionResult HomeAdmin()
@@ -66,32 +99,28 @@ namespace QEQ.Controllers
             {
                 return View("FormCaracteristica");
             }
-
             if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
             {
                 if (Accion == "Ver")
                 {
                     ViewBag.Enabled = new { disabled = "disabled" };
                     Caracteristica x = Conexion.ObtenerCaracteristica(ID);
+                    return View("FormCategoriaC", x);
                 }
 
                 if (Accion == "Editar")
                 {
-                    Caracteristica c = Conexion.ObtenerCaracteristica(ID);
-                    Conexion.ModificarCaracteristica(c);
-                    return View("FormCategoriaCmod");
+                    Caracteristica x = Conexion.ObtenerCaracteristica(ID);
+                    return View("FormCategoriaC", x);
                 }
 
                 if (Accion == "Eliminar")
                 {
                     Conexion.EliminarCaracteristica(ID);
                 }
-
-                return RedirectToAction("ABMCaracteristica");
             }
-            return View("Index");
+            return RedirectToAction("ABMCaracteristica");
         }
-
         
         public ActionResult GrabarCaracteristica(Caracteristica x, string Accion)
         {
@@ -234,26 +263,28 @@ namespace QEQ.Controllers
             }
         }
 
-
+        //NO CON SWITCH 
         public ActionResult EdicionPersonaje(string Accion, int ID = 0)
         {
             ViewBag.Enabled = new { };
             ViewBag.Accion = Accion;
-            if (Accion == "Insertar")
+            switch(Accion)
             {
-                return View("FormPersonaje");
-            }
-            if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
-            {
-                if ((Accion == "Ver") || (Accion == "Eliminar"))
-                    ViewBag.Enabled = new { disabled = "disabled" };
-                Personaje x = Conexion.ObtenerPersonaje(ID);
-                return View("FormPersonaje", x);
+                case "Insertar":
+                    return View("FormPersonaje");
+                case "Ver":
+                case "Editar":
+                    if (Accion=="Ver")
+                       ViewBag.Enabled = new { disabled = "disabled" };
+                    Personaje x = Conexion.ObtenerPersonaje(ID);
+                    break;
+                case "Eliminar":
+                    Conexion.EliminarPersonaje(ID);
+                    break; 
             }
             return RedirectToAction("ABMPersonaje");
         }
-
-      
+        
         public ActionResult GrabarPersonaje(Personaje x, string Accion)
         {
             ViewBag.Accion = Accion;

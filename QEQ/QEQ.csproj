@@ -214,11 +214,9 @@
     <Content Include="Views\Home\Jugar.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Registro.cshtml" />
-    <Content Include="Views\BackOffice\FormCategoriaCmod.cshtml" />
     <Content Include="Views\BackOffice\ABMCategoriaP.cshtml" />
     <Content Include="Views\BackOffice\FormCategoriaP.cshtml" />
     <Content Include="Views\BackOffice\ABMCategoriaP.cshtml" />
-    <Content Include="Views\BackOffice\FormCategoriaP.cshtml" />
     <Content Include="Views\BackOffice\FormPersonaje.cshtml" />
   </ItemGroup>
   <ItemGroup>
