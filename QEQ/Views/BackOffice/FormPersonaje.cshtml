@@ -7,7 +7,7 @@
 @using (Html.BeginForm("GrabarPersonaje", "BackOffice", new { Accion = @ViewBag.Accion }, FormMethod.Post))
 {
     @Html.HiddenFor(x => x.IdPers)
-    <p>Nombre: @Html.TextBoxFor((x => x.Nombre), (object)ViewBag.Enabled)) @Html.ValidationMessageFor(x => x.Nombre)</p><br />
-    <p>IDCategoria: @Html.TextBoxFor(x => x.FkCategoria), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.FkCategoria)</p><br />
+    <p>Nombre: @Html.TextBoxFor((x => x.Nombre), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.Nombre)</p><br />
+    <p>IDCategoria: @Html.TextBoxFor((x => x.FkCategoria), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.FkCategoria)</p><br />
     <input type="submit" value="Enviar" />
 }

@@ -332,11 +332,6 @@ namespace QEQ.Models
             return personajes;
         }
 
-<<<<<<< HEAD
-        //Obtener
-
-        //Insertar
-=======
         public static Personaje ObtenerPersonaje(int ID)
         {
             Personaje p = new Personaje(0, "", 0); 
@@ -369,7 +364,7 @@ namespace QEQ.Models
             int regsAfectados = Consulta.ExecuteNonQuery();
             return regsAfectados;
         }
->>>>>>> f67978544fbcad310b498591e67bbe217a9faf77
+
 
         public static int ModificarPersonaje(Personaje p)
         {
@@ -383,10 +378,7 @@ namespace QEQ.Models
             return regsAfectados;
         }
 
-<<<<<<< HEAD
-        //Eliminar
 
-=======
         public static int EliminarPersonaje(int ID)
         {
             SqlConnection Conexion = Conectar();
@@ -397,7 +389,6 @@ namespace QEQ.Models
             int regsAfectados = Consulta.ExecuteNonQuery();
             return regsAfectados;
         }
->>>>>>> f67978544fbcad310b498591e67bbe217a9faf77
 
     }
 }

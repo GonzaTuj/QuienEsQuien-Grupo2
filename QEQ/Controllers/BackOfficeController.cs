@@ -19,13 +19,18 @@ namespace QEQ.Controllers
         {
             return View();
         }
+        public ActionResult FormPersonaje()
+        {
+            return View();
+        }
         public ActionResult FormCategoriaC()
         {
             return View();
         }
-
-
-
+        public ActionResult FormCategoriaP()
+        {
+            return View();
+        }
         public ActionResult ABMCategoriaC()
         {
             ViewBag.ListaCategoriasC = Conexion.ListarCategoriaC();
@@ -175,7 +180,7 @@ namespace QEQ.Controllers
             }
         }
 
-        [HttpPost]
+      
         public ActionResult EdicionCategoriaP(string Accion, int ID = 0)
         {
             ViewBag.Enabled = new { };
@@ -186,15 +191,24 @@ namespace QEQ.Controllers
             }
             if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
             {
-                if ((Accion == "Ver") || (Accion == "Eliminar"))
+                if (Accion == "Ver") 
                     ViewBag.Enabled = new { disabled = "disabled" };
                 CategoriaCaracteristica x = Conexion.ObtenerCategoriaC(ID);
-                return View("FormCategoriaP", x);
+
+                if (Accion == "Eliminar")
+                {
+                    Conexion.EliminarCategoriaP(ID);
+                }
+                if (Accion == "Editar")
+                {
+                
+                }
+                return RedirectToAction("ABMCategoriaP");
             }
             return View("Index");
         }
 
-        [HttpPost]
+        
         public ActionResult GrabarCategoriaP(CategoriaPersonaje x, string Accion)
         {
             ViewBag.Accion = Accion;
@@ -216,56 +230,11 @@ namespace QEQ.Controllers
                         Conexion.EliminarCategoriaP(x.ID);
                         break;
                 }
-                return View("FormCategoriaP", x);
+                return RedirectToAction("ABMCategoriaP", x);
             }
         }
 
-        [HttpPost]
-        public ActionResult EdicionCategoriaP(string Accion, int ID = 0)
-        {
-            ViewBag.Enabled = new { };
-            ViewBag.Accion = Accion;
-            if (Accion == "Insertar")
-            {
-                return View("FormCategoriaP");
-            }
-            if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
-            {
-                if ((Accion == "Ver") || (Accion == "Eliminar"))
-                    ViewBag.Enabled = new { disabled = "disabled" };
-                CategoriaPersonaje x = Conexion.ObtenerCategoriaP(ID);
-                return View("FormCategoriaP", x);
-            }
-            return View("Index");
-        }
 
-        [HttpPost]
-        public ActionResult GrabarCategoriaP(CategoriaPersonaje x, string Accion)
-        {
-            ViewBag.Accion = Accion;
-            if (!ModelState.IsValid)
-            {
-                return View("FormCategoriaP", x);
-            }
-            else
-            {
-                switch (Accion)
-                {
-                    case "Insertar":
-                        Conexion.InsertarCategoriaP(x);
-                        break;
-                    case "Editar":
-                        Conexion.ModificarCategoriaP(x);
-                        break;
-                    case "Eliminar":
-                        Conexion.EliminarCategoriaP(x.ID);
-                        break;
-                }
-                return View("FormCategoriaP", x);
-            }
-        }
-
-        [HttpPost]
         public ActionResult EdicionPersonaje(string Accion, int ID = 0)
         {
             ViewBag.Enabled = new { };
@@ -281,10 +250,10 @@ namespace QEQ.Controllers
                 Personaje x = Conexion.ObtenerPersonaje(ID);
                 return View("FormPersonaje", x);
             }
-            return View("Index");
+            return RedirectToAction("ABMPersonaje");
         }
 
-        [HttpPost]
+      
         public ActionResult GrabarPersonaje(Personaje x, string Accion)
         {
             ViewBag.Accion = Accion;
@@ -306,7 +275,7 @@ namespace QEQ.Controllers
                         Conexion.EliminarPersonaje(x.IdPers);
                         break;
                 }
-                return View("FormPersonaje", x);
+                return RedirectToAction("ABMPersonaje",x);
             }
         }
     }

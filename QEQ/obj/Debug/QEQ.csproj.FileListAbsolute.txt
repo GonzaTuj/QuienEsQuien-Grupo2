@@ -293,7 +293,6 @@ Z:\4to año\Programacion\3er Trim\realgit\QuienEsQuien-Grupo2\QEQ\obj\Debug\QEQ.
 Z:\4to año\Programacion\3er Trim\realgit\QuienEsQuien-Grupo2\QEQ\obj\Debug\QEQ.dll
 Z:\4to año\Programacion\3er Trim\realgit\QuienEsQuien-Grupo2\QEQ\obj\Debug\QEQ.pdb
 Z:\Programacion 2018\QeQ\Github13-11\QuienEsQuien-Grupo2\QEQ\bin\ApplicationInsights.config
-Z:\Programacion 2018\QeQ\Github13-11\QuienEsQuien-Grupo2\QEQ\bin\QEQ.dll.config
 Z:\Programacion 2018\QeQ\Github13-11\QuienEsQuien-Grupo2\QEQ\bin\QEQ.dll
 Z:\Programacion 2018\QeQ\Github13-11\QuienEsQuien-Grupo2\QEQ\bin\QEQ.pdb
 Z:\Programacion 2018\QeQ\Github13-11\QuienEsQuien-Grupo2\QEQ\bin\roslyn\csc.exe
