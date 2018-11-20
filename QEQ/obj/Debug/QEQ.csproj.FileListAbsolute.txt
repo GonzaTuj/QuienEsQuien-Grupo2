@@ -97,7 +97,6 @@ C:\Users\44160028\Desktop\QEQ\QEQ\obj\Debug\QEQ.csproj.CopyComplete
 C:\Users\44160028\Desktop\QEQ\QEQ\obj\Debug\QEQ.dll
 C:\Users\44160028\Desktop\QEQ\QEQ\obj\Debug\QEQ.pdb
 Z:\4IC 2018\Programacion\QEQ\QEQ\bin\ApplicationInsights.config
-Z:\4IC 2018\Programacion\QEQ\QEQ\bin\QEQ.dll.config
 Z:\4IC 2018\Programacion\QEQ\QEQ\bin\QEQ.dll
 Z:\4IC 2018\Programacion\QEQ\QEQ\bin\QEQ.pdb
 Z:\4IC 2018\Programacion\QEQ\QEQ\bin\roslyn\csc.exe
