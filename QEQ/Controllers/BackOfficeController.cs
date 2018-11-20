@@ -263,33 +263,43 @@ namespace QEQ.Controllers
             }
         }
 
-        //NO CON SWITCH 
+         
         public ActionResult EdicionPersonaje(string Accion, int ID = 0)
         {
             ViewBag.Enabled = new { };
             ViewBag.Accion = Accion;
-            switch(Accion)
+
+            if (Accion == "Insertar")
             {
-                case "Insertar":
-                    return View("FormPersonaje");
-                case "Ver":
-                case "Editar":
-                    if (Accion=="Ver")
-                       ViewBag.Enabled = new { disabled = "disabled" };
-                    Personaje x = Conexion.ObtenerPersonaje(ID);
-                    break;
-                case "Eliminar":
-                    Conexion.EliminarPersonaje(ID);
-                    break; 
+                Personaje p = new Personaje();
+                return View("FormPersonaje", p);
             }
-            return RedirectToAction("ABMPersonaje");
+            if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
+            {
+                if (Accion == "Ver")
+                    ViewBag.Enabled = new { disabled = "disabled" };
+                Personaje x = Conexion.ObtenerPersonaje(ID);
+
+                if (Accion == "Eliminar")
+                {
+                    Conexion.EliminarPersonaje(ID);
+                }
+                if (Accion == "Editar")
+                {
+
+                }
+                return RedirectToAction("ABMPersonaje");
+            }
+            return View("Index");
         }
-        
+
+        [HttpPost]
         public ActionResult GrabarPersonaje(Personaje x, string Accion)
         {
             ViewBag.Accion = Accion;
             if (!ModelState.IsValid)
             {
+                ViewBag.Accion = Accion;
                 return View("FormPersonaje", x);
             }
             else
@@ -306,7 +316,7 @@ namespace QEQ.Controllers
                         Conexion.EliminarPersonaje(x.IdPers);
                         break;
                 }
-                return RedirectToAction("ABMPersonaje",x);
+                return RedirectToAction("ABMPersonaje", x);
             }
         }
     }

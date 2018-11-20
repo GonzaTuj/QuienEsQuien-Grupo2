@@ -5,9 +5,11 @@
 }
 <link rel="stylesheet" type="text/css" href="~/Content/estilo.css" />
 <h1>Personaje</h1>
-@using (Html.BeginForm("GrabarPersonaje", "BackOffice", new { Accion = @ViewBag.Accion }, FormMethod.Post))
+@using (Html.BeginForm("GrabarPersonaje", "BackOffice", FormMethod.Post))
 {
+    <input type="hidden" name="Accion" value="@ViewBag.Accion" />
     @Html.HiddenFor(x => x.IdPers)
+
     <p>Nombre: @Html.TextBoxFor((x => x.Nombre), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.Nombre)</p><br />
     <p>IDCategoria: @Html.TextBoxFor((x => x.FkCategoria), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.FkCategoria)</p><br />
     <input type="submit" value="Enviar" />
