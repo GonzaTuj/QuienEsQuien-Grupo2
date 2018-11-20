@@ -13,3 +13,7 @@
     <p>Pregunta: @Html.TextBoxFor((x => x.Pregunta), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.Pregunta)</p><br />
     <input type="submit" value="Enviar" />
 }
+
+    <div align="center">
+        <a href=@Url.Action("ABMCaracteristica","BackOffice") class="button" id="menulink">Volver</a>
+    </div>
