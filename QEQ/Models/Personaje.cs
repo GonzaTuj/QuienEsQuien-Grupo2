@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace QEQ.Models
 {
@@ -12,7 +13,9 @@ namespace QEQ.Models
         private int _fkCategoria;
 
         public int IdPers { get => _IdPers; set => _IdPers = value; }
+        [Required]
         public string Nombre { get => _Nombre; set => _Nombre = value; }
+        [Required]
         public int FkCategoria { get => _fkCategoria; set => _fkCategoria = value; }
 
         public Personaje(int IdPers, string Nombre, int fkCategoria)
