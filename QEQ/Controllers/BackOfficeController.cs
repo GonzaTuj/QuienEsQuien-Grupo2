@@ -105,13 +105,13 @@ namespace QEQ.Controllers
                 {
                     ViewBag.Enabled = new { disabled = "disabled" };
                     Caracteristica x = Conexion.ObtenerCaracteristica(ID);
-                    return View("FormCategoriaC", x);
+                    return View("FormCaracteristica", x);
                 }
 
                 if (Accion == "Editar")
                 {
                     Caracteristica x = Conexion.ObtenerCaracteristica(ID);
-                    return View("FormCategoriaC", x);
+                    return View("FormCaracteristica", x);
                 }
 
                 if (Accion == "Eliminar")
@@ -122,6 +122,7 @@ namespace QEQ.Controllers
             return RedirectToAction("ABMCaracteristica");
         }
         
+        [HttpPost]
         public ActionResult GrabarCaracteristica(Caracteristica x, string Accion)
         {
             ViewBag.Accion = Accion;
@@ -168,9 +169,8 @@ namespace QEQ.Controllers
                 
                 if (Accion == "Editar")
                 {
-                    CategoriaCaracteristica c = Conexion.ObtenerCategoriaC(ID);
-                    Conexion.ModificarCategoriaC(c);
-                    return View("FormCategoriaCmod");
+                    CategoriaCaracteristica x = Conexion.ObtenerCategoriaC(ID);
+                    return View("FormCategoriaC", x);
                 }
 
                 if (Accion == "Eliminar")
@@ -183,7 +183,7 @@ namespace QEQ.Controllers
             return View("Index");
         }
 
-      
+      [HttpPost]
         public ActionResult GrabarCategoriaC(CategoriaCaracteristica x, string Accion)
         {
             ViewBag.Accion = Accion;
@@ -222,7 +222,7 @@ namespace QEQ.Controllers
             {
                 if (Accion == "Ver") 
                     ViewBag.Enabled = new { disabled = "disabled" };
-                CategoriaCaracteristica x = Conexion.ObtenerCategoriaC(ID);
+                CategoriaPersonaje cp = Conexion.ObtenerCategoriaP(ID);
 
                 if (Accion == "Eliminar")
                 {
@@ -230,14 +230,15 @@ namespace QEQ.Controllers
                 }
                 if (Accion == "Editar")
                 {
-                
+                    CategoriaPersonaje x = Conexion.ObtenerCategoriaP(ID);
+                    return View("FormCategoriaP", x);
                 }
                 return RedirectToAction("ABMCategoriaP");
             }
             return View("Index");
         }
 
-        
+        [HttpPost]
         public ActionResult GrabarCategoriaP(CategoriaPersonaje x, string Accion)
         {
             ViewBag.Accion = Accion;
@@ -263,11 +264,15 @@ namespace QEQ.Controllers
             }
         }
 
+<<<<<<< HEAD
          
+=======
+>>>>>>> 077d0d7e4f06750fe7b9b339c9d28b517836267a
         public ActionResult EdicionPersonaje(string Accion, int ID = 0)
         {
             ViewBag.Enabled = new { };
             ViewBag.Accion = Accion;
+<<<<<<< HEAD
 
             if (Accion == "Insertar")
             {
@@ -279,6 +284,17 @@ namespace QEQ.Controllers
                 if (Accion == "Ver")
                     ViewBag.Enabled = new { disabled = "disabled" };
                 Personaje x = Conexion.ObtenerPersonaje(ID);
+=======
+            if (Accion == "Insertar")
+            {
+                return View("FormPersonaje");
+            }
+            if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
+            {
+                if (Accion == "Ver")
+                    ViewBag.Enabled = new { disabled = "disabled" };
+                Personaje p = Conexion.ObtenerPersonaje(ID);
+>>>>>>> 077d0d7e4f06750fe7b9b339c9d28b517836267a
 
                 if (Accion == "Eliminar")
                 {
@@ -286,13 +302,22 @@ namespace QEQ.Controllers
                 }
                 if (Accion == "Editar")
                 {
+<<<<<<< HEAD
 
+=======
+                    Personaje x = Conexion.ObtenerPersonaje(ID);
+                    return View("FormPersonaje", x);
+>>>>>>> 077d0d7e4f06750fe7b9b339c9d28b517836267a
                 }
                 return RedirectToAction("ABMPersonaje");
             }
             return View("Index");
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 077d0d7e4f06750fe7b9b339c9d28b517836267a
         [HttpPost]
         public ActionResult GrabarPersonaje(Personaje x, string Accion)
         {
