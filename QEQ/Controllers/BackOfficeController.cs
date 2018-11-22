@@ -264,15 +264,10 @@ namespace QEQ.Controllers
             }
         }
 
-<<<<<<< HEAD
-         
-=======
->>>>>>> 077d0d7e4f06750fe7b9b339c9d28b517836267a
         public ActionResult EdicionPersonaje(string Accion, int ID = 0)
         {
             ViewBag.Enabled = new { };
             ViewBag.Accion = Accion;
-<<<<<<< HEAD
 
             if (Accion == "Insertar")
             {
@@ -281,43 +276,36 @@ namespace QEQ.Controllers
             }
             if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
             {
-                if (Accion == "Ver")
-                    ViewBag.Enabled = new { disabled = "disabled" };
-                Personaje x = Conexion.ObtenerPersonaje(ID);
-=======
-            if (Accion == "Insertar")
-            {
-                return View("FormPersonaje");
-            }
-            if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
-            {
-                if (Accion == "Ver")
-                    ViewBag.Enabled = new { disabled = "disabled" };
-                Personaje p = Conexion.ObtenerPersonaje(ID);
->>>>>>> 077d0d7e4f06750fe7b9b339c9d28b517836267a
-
-                if (Accion == "Eliminar")
+                if (Accion == "Insertar")
                 {
-                    Conexion.EliminarPersonaje(ID);
+                    return View("FormPersonaje");
                 }
-                if (Accion == "Editar")
+                if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
                 {
-<<<<<<< HEAD
+                    if (Accion == "Ver")
+                    {
+                        ViewBag.Enabled = new { disabled = "disabled" };
+                        Personaje p = Conexion.ObtenerPersonaje(ID);
+                        return View("FormPersonaje", p);
+                    }
+                    if (Accion == "Eliminar")
+                    {
+                        Conexion.EliminarPersonaje(ID);
+                    }
+                    if (Accion == "Editar")
+                    {
 
-=======
-                    Personaje x = Conexion.ObtenerPersonaje(ID);
-                    return View("FormPersonaje", x);
->>>>>>> 077d0d7e4f06750fe7b9b339c9d28b517836267a
+                        Personaje x = Conexion.ObtenerPersonaje(ID);
+                        return View("FormPersonaje", x);
+
+                    }
+                    return RedirectToAction("ABMPersonaje");
                 }
-                return RedirectToAction("ABMPersonaje");
+                
             }
             return View("Index");
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 077d0d7e4f06750fe7b9b339c9d28b517836267a
         [HttpPost]
         public ActionResult GrabarPersonaje(Personaje x, string Accion)
         {
