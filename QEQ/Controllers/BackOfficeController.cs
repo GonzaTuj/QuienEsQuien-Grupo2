@@ -264,10 +264,6 @@ namespace QEQ.Controllers
             }
         }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> bbc79c167b7927afcf9f4a37af9a37b4a7ee5329
         public ActionResult EdicionPersonaje(string Accion, int ID = 0)
         {
             ViewBag.Enabled = new { };
@@ -280,22 +276,20 @@ namespace QEQ.Controllers
             }
             if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
             {
-<<<<<<< HEAD
+
                 if (Accion == "Insertar")
-=======
+
                 if (Accion == "Ver")
                 {
                     ViewBag.Enabled = new { disabled = "disabled" };
                     Personaje x = Conexion.ObtenerPersonaje(ID);
                 }
                 if (Accion == "Eliminar")
->>>>>>> bbc79c167b7927afcf9f4a37af9a37b4a7ee5329
                 {
                     return View("FormPersonaje");
                 }
                 if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
                 {
-<<<<<<< HEAD
                     if (Accion == "Ver")
                     {
                         ViewBag.Enabled = new { disabled = "disabled" };
@@ -314,24 +308,11 @@ namespace QEQ.Controllers
 
                     }
                     return RedirectToAction("ABMPersonaje");
-=======
-                    Personaje x = Conexion.ObtenerPersonaje(ID);
-                    return View("FormPersonaje", x);
-
->>>>>>> bbc79c167b7927afcf9f4a37af9a37b4a7ee5329
-                }
-                
+                }  
             }
             return View("Index");
         }
 
-<<<<<<< HEAD
-=======
-
-
-        
-
->>>>>>> bbc79c167b7927afcf9f4a37af9a37b4a7ee5329
         [HttpPost]
         public ActionResult GrabarPersonaje(Personaje x, string Accion)
         {
