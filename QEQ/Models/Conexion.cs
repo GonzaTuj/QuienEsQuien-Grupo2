@@ -312,7 +312,7 @@ namespace QEQ.Models
         }
 
         //PERSONAJES
-        public static List<Personaje> ListarPersonaje()
+        public static List<Personaje> ListarPersonaje(int ID)
         {
             List<Personaje> personajes = new List<Personaje>();
             SqlConnection Conexion = Conectar();
@@ -320,6 +320,7 @@ namespace QEQ.Models
             Consulta.CommandText = "ObtenerPersonaje";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
             Consulta.Parameters.AddWithValue("@id", "");
+            Consulta.Parameters.AddWithValue("@idcategoria", ID);
             SqlDataReader dataReader = Consulta.ExecuteReader();
             while (dataReader.Read())
             {

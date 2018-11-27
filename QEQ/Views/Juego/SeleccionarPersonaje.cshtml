@@ -1,0 +1,29 @@
+﻿@using QEQ.Models
+@model Personaje
+@{
+    ViewBag.Title = "QUIEN ES QUIEN | Juego - Seleccionar Personaje";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/estilo.css" />
+<h1>Seleccionar Personaje</h1>
+<p>Seleccioná el personaje que tu oponente debe adivinar.</p>
+@using (Html.BeginForm("GrabarPersonajesElegidos", "Juego", FormMethod.Post))
+{
+    <p>Personaje para Jugador 1:</p>
+    <select>
+        @foreach (Personaje p in ViewBag.ListaPersonajes)
+        {
+            <option value="@p.IdPers">@p.Nombre</option>
+            //Agregar imagen del Personaje
+        }
+    </select><br />
+
+    <p>Personaje para Jugador 2:</p>
+    <select>
+        @foreach (Personaje p in ViewBag.ListaPersonajes)
+        {
+            <option value="@p.IdPers">@p.Nombre</option>
+            //Agregar imagen del Personaje
+        }
+    </select><br />
+    <input class="button" type="submit" value="Aceptar">
+}

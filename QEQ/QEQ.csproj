@@ -220,6 +220,7 @@
     <Content Include="Views\BackOffice\ABMCategoriaP.cshtml" />
     <Content Include="Views\BackOffice\FormPersonaje.cshtml" />
     <Content Include="Views\Juego\SeleccionarCategoria.cshtml" />
+    <Content Include="Views\Juego\SeleccionarPersonaje.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

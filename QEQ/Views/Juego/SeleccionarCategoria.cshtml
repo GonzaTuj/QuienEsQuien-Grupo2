@@ -1,20 +1,26 @@
 ﻿@using QEQ.Models
 @model CategoriaPersonaje
 @{
-    /**/
-
-    ViewBag.Title = "QUIEN ES QUIEN | Juego - Seleccionar Categoria";
+    ViewBag.Title = "QUIEN ES QUIEN | Juego - Seleccionar Juego";
 }
 <link rel="stylesheet" type="text/css" href="~/Content/estilo.css" />
-<h1>Seleccionar Categoria</h1>
-<p>Seleccioná las categorias de los personajes con los que desees jugar.</p>
-@using (Html.BeginForm("VerificarCategoria", "Juego", FormMethod.Post))
+<h1>Seleccionar Juego</h1>
+
+@using (Html.BeginForm("VerificarModo", "Juego", FormMethod.Post))
 {
+    <h2>Modo</h2><br/>
+    <p>Seleccioná el Modo de juego.</p><br />
+    <select>
+            <option value="Individual">Individual</option>
+            <option value="Multijugador">Multijugador</option>
+    </select><br />
+    <h2>Categoria</h2><br />
+    <p>Seleccioná las categorias de los personajes con los que desees jugar.</p><br />
     <select>
         @foreach (CategoriaPersonaje cp in ViewBag.ListaCategoriaP)
         {
             <option value="@cp.ID">@cp.Nombre</option>
         }
-    </select><br/>
+    </select><br />
     <input class="button" type="submit" value="Aceptar">
 }

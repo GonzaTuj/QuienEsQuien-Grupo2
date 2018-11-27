@@ -72,7 +72,7 @@ namespace QEQ.Models
             _NombreUsuario = NombreUsuario;
             _Password = Password;
             _EsAdmin = EsAdmin;
-            _Monedas = Monedas; 
+            _Monedas = Monedas;
         }
 
         public Usuario(string Usuario, string Password, int Monedas)
@@ -80,7 +80,7 @@ namespace QEQ.Models
             _NombreUsuario = Usuario;
             _Password = Password;
             _EsAdmin = false;
-            _Monedas = Monedas; 
+            _Monedas = Monedas;
         }
     }
 }
