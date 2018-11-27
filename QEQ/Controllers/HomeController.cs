@@ -13,6 +13,11 @@ namespace QEQ.Controllers
         {
             return View();
         }
+        public ActionResult Juego()
+        {
+            return View();
+        }
+
 
         public ActionResult About()
         {
