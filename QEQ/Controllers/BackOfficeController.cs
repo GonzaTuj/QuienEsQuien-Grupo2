@@ -220,14 +220,18 @@ namespace QEQ.Controllers
             }
             if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
             {
-                if (Accion == "Ver") 
+                if (Accion == "Ver")
+                {
                     ViewBag.Enabled = new { disabled = "disabled" };
-                CategoriaPersonaje cp = Conexion.ObtenerCategoriaP(ID);
+                    CategoriaPersonaje cp = Conexion.ObtenerCategoriaP(ID);
+                    return View("FormCategoriaP", cp);
+                }
 
                 if (Accion == "Eliminar")
                 {
                     Conexion.EliminarCategoriaP(ID);
                 }
+
                 if (Accion == "Editar")
                 {
                     CategoriaPersonaje x = Conexion.ObtenerCategoriaP(ID);
@@ -282,7 +286,8 @@ namespace QEQ.Controllers
                 if (Accion == "Ver")
                 {
                     ViewBag.Enabled = new { disabled = "disabled" };
-                    Personaje x = Conexion.ObtenerPersonaje(ID);
+                    Personaje o = Conexion.ObtenerPersonaje(ID);
+                    return View("FormCategoriaP", o);
                 }
                 if (Accion == "Eliminar")
                 {
