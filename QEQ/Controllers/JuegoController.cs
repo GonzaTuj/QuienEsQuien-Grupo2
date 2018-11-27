@@ -14,31 +14,21 @@ namespace QEQ.Controllers
         {
             return View();
         }
-<<<<<<< HEAD
-        public ActionResult Juego()
+        public ActionResult AgregarJugador()
         {
-            string nom = "invitado";
-            string pass = "invitado";
-            int monedas = 1000000;
-            Usuario user = Session["Usuario"] as Usuario;
-            if (user == null)
-            {
-                Usuario NuevoUsuario = new Usuario(nom, pass, monedas);
-                NuevoUsuario = Conexion.InsertarUsuario(user.NombreUsuario, user.Password, user.Monedas);
-            }
+            return View();
+        }
+        public ActionResult SleccionarCategoria()
+        {
             return View();
         }
 
+        public ActionResult Juego(int ID)
+        {
+            ViewBag.Seleccionados = Conexion.ObtenerCategoriaP(ID);
+            return View();
+        }
 
-        //(public ActionResult GrabarJugador()
-       // {
-        //}
-
-
-
-
-
-=======
 
         public ActionResult SeleccionarCategoria()
         {
@@ -47,16 +37,17 @@ namespace QEQ.Controllers
         }
 
         [HttpPost]
-        public ActionResult VerificarCategoria(int ID) //Devuelve lista con Personajes
+        public List<Personaje> VerificarCategoria(int ID) //Devuelve lista con Personajes
         {
             List<Personaje> Lista = new List<Personaje>();
-            Lista = Conexion.ListarPersonaje(); 
+            Lista = Conexion.ListarPersonaje();
             foreach (Personaje p in Lista)
             {
 
             }
-            return Personajes;
+            return Lista;
         }
->>>>>>> 63db650a85a53d927d45232ae2258b5436070618
     }
 }
+
+    

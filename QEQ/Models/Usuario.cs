@@ -67,7 +67,7 @@ namespace QEQ.Models
             }
         }
 
-        public Usuario ()
+        public  Usuario ()
         {
             _NombreUsuario = NombreUsuario;
             _Password = Password;
