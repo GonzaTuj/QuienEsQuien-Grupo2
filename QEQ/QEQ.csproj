@@ -222,7 +222,7 @@
     <Content Include="Views\Juego\Juego.cshtml" />
     <Content Include="Views\Juego\AgregarJugador.cshtml" />
     <Content Include="Views\Juego\SeleccionarCategoria.cshtml" />
-
+    <Content Include="Views\Juego\SeleccionarPersonaje.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -76,7 +76,7 @@ namespace QEQ.Controllers
             var user = Session["Usuario"] as Usuario;
             if (user.EsAdmin)
             {
-                ViewBag.ListaPersonajes = Conexion.ListarPersonaje();
+                ViewBag.ListaPersonajes = Conexion.ListarPersonaje(0);
                 return View();
             }
             else return RedirectToAction("Index", "Home");
