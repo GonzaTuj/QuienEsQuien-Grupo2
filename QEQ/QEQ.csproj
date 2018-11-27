@@ -219,13 +219,28 @@
     <Content Include="Views\BackOffice\FormCategoriaP.cshtml" />
     <Content Include="Views\BackOffice\ABMCategoriaP.cshtml" />
     <Content Include="Views\BackOffice\FormPersonaje.cshtml" />
+<<<<<<< HEAD
 
     <Content Include="Views\Juego\Juego.cshtml" />
     <Content Include="Views\Juego\AgregarJugador.cshtml" />
 
+=======
+    <Content Include="Views\Juego\Juego.cshtml" />
+    <Content Include="Views\Juego\AgregarJugador.cshtml" />
+>>>>>>> b699217a0c14ffbcfdad2101e6c284b6046c4df3
     <Content Include="Views\Juego\SeleccionarCategoria.cshtml" />
 
     <Content Include="Views\Juego\SeleccionarPersonaje.cshtml" />
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+    <Content Include="Views\Juego\SeleccionarPersonaje.cshtml" />
+=======
+>>>>>>> 63db650a85a53d927d45232ae2258b5436070618
+>>>>>>> 4191bee4afde3f6259946f91cc608023ff37a0cc
+>>>>>>> 04f19f74d08dd846a869baddb0dea2f933dd0614
+>>>>>>> b699217a0c14ffbcfdad2101e6c284b6046c4df3
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
