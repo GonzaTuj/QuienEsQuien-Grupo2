@@ -268,7 +268,6 @@ namespace QEQ.Controllers
             }
         }
 
-
         public ActionResult EdicionPersonaje(string Accion, int ID = 0)
         {
             ViewBag.Enabled = new { };
@@ -281,6 +280,9 @@ namespace QEQ.Controllers
             }
             if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
             {
+
+                if (Accion == "Insertar")
+
                 if (Accion == "Ver")
                 {
                     ViewBag.Enabled = new { disabled = "disabled" };
@@ -289,22 +291,32 @@ namespace QEQ.Controllers
                 }
                 if (Accion == "Eliminar")
                 {
-                    Conexion.EliminarPersonaje(ID);
+                    return View("FormPersonaje");
                 }
-                if (Accion == "Editar")
+                if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
                 {
-                    Personaje x = Conexion.ObtenerPersonaje(ID);
-                    return View("FormPersonaje", x);
+                    if (Accion == "Ver")
+                    {
+                        ViewBag.Enabled = new { disabled = "disabled" };
+                        Personaje p = Conexion.ObtenerPersonaje(ID);
+                        return View("FormPersonaje", p);
+                    }
+                    if (Accion == "Eliminar")
+                    {
+                        Conexion.EliminarPersonaje(ID);
+                    }
+                    if (Accion == "Editar")
+                    {
 
-                }
-                return RedirectToAction("ABMPersonaje");
+                        Personaje x = Conexion.ObtenerPersonaje(ID);
+                        return View("FormPersonaje", x);
+
+                    }
+                    return RedirectToAction("ABMPersonaje");
+                }  
             }
             return View("Index");
         }
-
-
-
-        
 
         [HttpPost]
         public ActionResult GrabarPersonaje(Personaje x, string Accion)

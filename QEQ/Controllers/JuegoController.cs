@@ -14,6 +14,7 @@ namespace QEQ.Controllers
         {
             return View();
         }
+<<<<<<< HEAD
         public ActionResult Juego()
         {
             string nom = "invitado";
@@ -37,5 +38,25 @@ namespace QEQ.Controllers
 
 
 
+=======
+
+        public ActionResult SeleccionarCategoria()
+        {
+            ViewBag.ListaCategoriaP = Conexion.ListarCategoriaP();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult VerificarCategoria(int ID) //Devuelve lista con Personajes
+        {
+            List<Personaje> Lista = new List<Personaje>();
+            Lista = Conexion.ListarPersonaje(); 
+            foreach (Personaje p in Lista)
+            {
+
+            }
+            return Personajes;
+        }
+>>>>>>> 63db650a85a53d927d45232ae2258b5436070618
     }
 }
