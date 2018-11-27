@@ -15,31 +15,10 @@ namespace QEQ.Controllers
         {
             return View();
         }
-<<<<<<< HEAD
         public ActionResult Juego()
         {
-            string nom = "invitado";
-            string pass = "invitado";
-            int monedas = 1000000;
-            Usuario user = Session["Usuario"] as Usuario;
-            if (user == null)
-            {
-                Usuario NuevoUsuario = new Usuario(nom, pass, monedas);
-                NuevoUsuario = Conexion.InsertarUsuario(user.NombreUsuario, user.Password, user.Monedas);
-            }
             return View();
         }
-
-
-        //(public ActionResult GrabarJugador()
-       // {
-        //}
-
-
-
-
-
-=======
 
         public ActionResult SeleccionarCategoria()
         {
@@ -49,9 +28,21 @@ namespace QEQ.Controllers
 
         [HttpPost]
         public ActionResult VerificarModo(string Modo, int ID)
-        { 
+        {
+            //SESSION
+            Usuario user = Session["Usuario"] as Usuario;
+            string nom = "", pass = "";
+            int monedas = 0;
+            if (user == null)
+            {
+                nom = "Invitado";
+                pass = "Invitado";
+                monedas = 1000000;
+            }
+            Usuario Jugador = new Usuario(nom, pass, monedas);
             if (Modo == "Individual")
             {
+                //SELECCIONAR PERSONAJE
                 ListaPersonajes = Conexion.ListarPersonaje(ID);
                 Random rnd = new Random();
                 int r = rnd.Next(ListaPersonajes.Count);
@@ -60,6 +51,8 @@ namespace QEQ.Controllers
             }
             else if (Modo == "Multijugador")
             {
+                //SESSION
+                Usuario Jugador2 = new Usuario("Jugador 2", "Jugador2", 1000000);
                 return View("SeleccionarPersonaje", ID); 
             }
             return View("SeleccionarCategoria"); 
@@ -72,6 +65,7 @@ namespace QEQ.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult GrabarPersonajesElegidos(int ID1, int ID2)
         {
             Personaje Personaje1 = Conexion.ObtenerPersonaje(ID1);
@@ -85,11 +79,5 @@ namespace QEQ.Controllers
                 return View("SeleccionarPersonaje"); 
             }
         }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 63db650a85a53d927d45232ae2258b5436070618
->>>>>>> 4191bee4afde3f6259946f91cc608023ff37a0cc
     }
 }
