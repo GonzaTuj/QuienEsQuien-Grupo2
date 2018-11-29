@@ -165,6 +165,7 @@ namespace QEQ.Controllers
                 {
                     ViewBag.Enabled = new { disabled = "disabled" };
                     CategoriaCaracteristica x = Conexion.ObtenerCategoriaC(ID);
+                    return View("FormCategoriaC", x);
                 }
                 
                 if (Accion == "Editar")

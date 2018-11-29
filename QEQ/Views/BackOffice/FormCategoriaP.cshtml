@@ -9,7 +9,14 @@
 {
     @Html.HiddenFor(x => x.ID)
     <p>Nombre: @Html.TextBoxFor((x => x.Nombre), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.Nombre)</p><br />
-    <input type="submit" value="Enviar" />
+    if (@ViewBag.Accion == "Ver")
+    {
+        <input type="submit" value="Enviar" disabled />
+    }
+    else
+    {
+        <input type="submit" value="Enviar" />
+    }
 }
 
 <div align="center">
