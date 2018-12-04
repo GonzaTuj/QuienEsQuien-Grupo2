@@ -158,6 +158,7 @@
     <Compile Include="Models\CategoriaPersonaje.cs" />
     <Compile Include="Models\Conexion.cs" />
     <Compile Include="Models\Personaje.cs" />
+    <Compile Include="Models\PersonajeCaracteristica.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
