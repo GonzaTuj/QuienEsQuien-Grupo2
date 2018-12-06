@@ -11,7 +11,7 @@
     @Html.HiddenFor(x => x.IdPers)
 
     <p>Nombre: @Html.TextBoxFor((x => x.Nombre), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.Nombre)</p><br />
-    <p>IDCategoria: @Html.DropDownListFor(x => x.FkCategoria, new SelectList(ViewBag.personajes,"ID","Nombre")) @Html.ValidationMessageFor(x => x.FkCategoria)</p><br />
+    <p>Categoria: @Html.DropDownListFor(x => x.FkCategoria, new SelectList(ViewBag.personajes, "ID", "Nombre")) @Html.ValidationMessageFor(x => x.FkCategoria)</p><br />
     if (@ViewBag.Accion == "Ver")
     {
         <input type="submit" value="Enviar" disabled />
@@ -20,12 +20,6 @@
     {
         <input type="submit" value="Enviar" />
     }
-    <p>Caracteristicas: </p><br />
-    foreach (Caracteristica c in ViewBag.ListaPersonajeCaracteristicas)
-    {
-        @Html.CheckBox(c.Nombre, new { value = c.ID, @checked = true });
-    }
-
 }
 
 <div align="center">

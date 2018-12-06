@@ -18,7 +18,7 @@ namespace QEQ.Models
         [Required]
         public int FkCategoria { get => _fkCategoria; set => _fkCategoria = value; }
 
-        public Personaje(int IdPers, string Nombre, int fkCategoria)
+    public Personaje(int IdPers, string Nombre, int fkCategoria)
         {
             this.IdPers = IdPers;
             this.Nombre = Nombre;

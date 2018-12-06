@@ -9,7 +9,8 @@ namespace QEQ.Models
     {
         private int _fkPersonaje;
         private int _fkCaracteristica;
-        private string _NombreCaracteristica; 
+        private string _NombreCaracteristica;
+        private bool _Checked;
 
         public int fkPersonaje
         {
@@ -50,18 +51,33 @@ namespace QEQ.Models
             }
         }
 
+        public bool Checked
+        {
+            get
+            {
+                return _Checked;
+            }
+
+            set
+            {
+                _Checked = value;
+            }
+        }
+
         public PersonajeCaracteristica()
         {
             _fkPersonaje = fkPersonaje;
             _fkCaracteristica = fkCaracteristica;
-            _NombreCaracteristica = NombreCaracteristica; 
+            _NombreCaracteristica = NombreCaracteristica;
+            _Checked = Checked; 
         }
 
-        public PersonajeCaracteristica(int fkPersonaje, int fkCaracteristica, string NombreCaracteristica)
+        public PersonajeCaracteristica(int fkPersonaje, int fkCaracteristica, string NombreCaracteristica, bool Checked)
         {
             _fkPersonaje = fkPersonaje;
             _fkCaracteristica = fkCaracteristica;
             _NombreCaracteristica = NombreCaracteristica;
+            _Checked = Checked; 
         }
     }
 }

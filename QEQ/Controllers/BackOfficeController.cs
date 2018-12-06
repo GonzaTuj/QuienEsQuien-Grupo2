@@ -82,6 +82,17 @@ namespace QEQ.Controllers
             else return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult CaracteristicasDePersonaje(int ID)
+        {
+            var user = Session["Usuario"] as Usuario;
+            if (user.EsAdmin)
+            {
+                ViewBag.ListaPersonajeCaracteristicas = Conexion.ListarPersonajeCaracteristica(ID);
+                return View();
+            }
+            else return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult HomeAdmin()
         {
             var user = Session["Usuario"] as Usuario;
@@ -285,17 +296,13 @@ namespace QEQ.Controllers
                 return View("FormPersonaje", p);
             }
             
-                if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
+                if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver") || (Accion == "Caracteristicas"))
                 {
                     if (Accion == "Ver")
                     {
                         ViewBag.Enabled = new { disabled = "disabled" };
                         Personaje p = Conexion.ObtenerPersonaje(ID);
-<<<<<<< HEAD
-                        ViewBag.personajes = Conexion.ListarCategoriaP();
-=======
-                        ViewBag.ListaPersonajeCaracteristicas = Conexion.ListarPersonajeCaracteristica(ID); 
->>>>>>> d7721711df51d2d41e2116f73135395dd4160d36
+                        ViewBag.Personajes = Conexion.ListarCategoriaP();
                         return View("FormPersonaje", p);
                     }
                     if (Accion == "Eliminar")
@@ -308,7 +315,12 @@ namespace QEQ.Controllers
                         Personaje x = Conexion.ObtenerPersonaje(ID);
                         ViewBag.ListaPersonajeCaracteristicas = Conexion.ListarPersonajeCaracteristica(ID);
                         return View("FormPersonaje", x);
-
+                    }
+                    if (Accion == "Caracteristicas")
+                    {
+                        ViewBag.ListaPersonajeCaracteristicas = Conexion.ListarPersonajeCaracteristica(ID);
+                        ViewBag.ListaTodasCaracteristicas = Conexion.ListarCaracteristica();
+                        return View("CaracteristicasDePersonaje");
                     }
                     return RedirectToAction("ABMPersonaje");
                 }  
@@ -342,5 +354,19 @@ namespace QEQ.Controllers
                 return RedirectToAction("ABMPersonaje", x);
             }
         }
+
+        [HttpPost]
+        public ActionResult GrabarPersonajeCaracteristica(int[] Caracteristicas, string Accion)
+        { 
+            foreach (PersonajeCaracteristica pc in Caracteristicas)
+            {
+
+            }
+            
+            return View("ABMPersonaje");
+        }
+        
     }
-}
+    
+   }
+

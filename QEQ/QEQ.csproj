@@ -223,6 +223,7 @@
     <Content Include="Views\Juego\Juego.cshtml" />
     <Content Include="Views\Juego\SeleccionarCategoria.cshtml" />
     <Content Include="Views\Juego\SeleccionarPersonaje.cshtml" />
+    <Content Include="Views\BackOffice\CaracteristicasDePersonaje.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -397,14 +397,15 @@ namespace QEQ.Models
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "ObtenerPersonajeCaracteristica";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            Consulta.Parameters.AddWithValue("@idpersonaje", null);
+            Consulta.Parameters.AddWithValue("@idpersonaje", ID);
             SqlDataReader dataReader = Consulta.ExecuteReader();
             while (dataReader.Read())
             {
                 int idpersonaje = Convert.ToInt32(dataReader["fkPersonaje"]);
                 int idcaracteristica = Convert.ToInt32(dataReader["fkCaracteristica"]);
                 string nombrecaracteristica = dataReader["Nombre"].ToString();
-                PersonajeCaracteristica cp = new PersonajeCaracteristica(idpersonaje, idcaracteristica, nombrecaracteristica);
+                bool Checked = true; 
+                PersonajeCaracteristica cp = new PersonajeCaracteristica(idpersonaje, idcaracteristica, nombrecaracteristica, Checked);
                 PersonajeCaracteristicas.Add(cp);
             }
             Desconectar(Conexion);

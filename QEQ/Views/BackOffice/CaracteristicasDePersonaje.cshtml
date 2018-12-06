@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "CaracteristicasDePersonaje";
+}
+
+@using QEQ.Models
+@{
+    ViewBag.Title = "ABMPERSONAJE | Caracteristicas del Personaje";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/estilo.css" />
+<h1>Caracteristicas del Personaje</h1>
+@using (Html.BeginForm("GrabarPersonajeCaracteristicas", "BackOffice", FormMethod.Post))
+{
+    <input type="hidden" name="Accion" value="@ViewBag.Accion" />
+    foreach (Caracteristica c in ViewBag.ListaTodasCaracteristicas)
+    {
+       <input type="checkbox" name="Caracteristicas"/> @c.Nombre<br />
+    }
+}
+
+<div align="center">
+    <a href=@Url.Action("ABMPersonaje","BackOffice") class="button" id="menulink">Volver</a>
+</div>
