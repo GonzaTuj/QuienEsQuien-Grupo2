@@ -20,6 +20,12 @@
     {
         <input type="submit" value="Enviar" />
     }
+    <p>Caracteristicas: </p><br />
+    foreach (Caracteristica c in ViewBag.ListaPersonajeCaracteristicas)
+    {
+        @Html.CheckBox(c.Nombre, new { value = c.ID, @checked = true });
+    }
+
 }
 
 <div align="center">

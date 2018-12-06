@@ -291,7 +291,11 @@ namespace QEQ.Controllers
                     {
                         ViewBag.Enabled = new { disabled = "disabled" };
                         Personaje p = Conexion.ObtenerPersonaje(ID);
+<<<<<<< HEAD
                         ViewBag.personajes = Conexion.ListarCategoriaP();
+=======
+                        ViewBag.ListaPersonajeCaracteristicas = Conexion.ListarPersonajeCaracteristica(ID); 
+>>>>>>> d7721711df51d2d41e2116f73135395dd4160d36
                         return View("FormPersonaje", p);
                     }
                     if (Accion == "Eliminar")
@@ -302,6 +306,7 @@ namespace QEQ.Controllers
                     {
                         ViewBag.personajes = Conexion.ListarCategoriaP();
                         Personaje x = Conexion.ObtenerPersonaje(ID);
+                        ViewBag.ListaPersonajeCaracteristicas = Conexion.ListarPersonajeCaracteristica(ID);
                         return View("FormPersonaje", x);
 
                     }

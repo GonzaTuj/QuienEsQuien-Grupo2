@@ -389,5 +389,27 @@ namespace QEQ.Models
             return regsAfectados;
         }
 
+        //RELACION
+        public static List<PersonajeCaracteristica> ListarPersonajeCaracteristica(int ID)
+        {
+            List<PersonajeCaracteristica> PersonajeCaracteristicas = new List<PersonajeCaracteristica>();
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta = Conexion.CreateCommand();
+            Consulta.CommandText = "ObtenerPersonajeCaracteristica";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@idpersonaje", null);
+            SqlDataReader dataReader = Consulta.ExecuteReader();
+            while (dataReader.Read())
+            {
+                int idpersonaje = Convert.ToInt32(dataReader["fkPersonaje"]);
+                int idcaracteristica = Convert.ToInt32(dataReader["fkCaracteristica"]);
+                string nombrecaracteristica = dataReader["Nombre"].ToString();
+                PersonajeCaracteristica cp = new PersonajeCaracteristica(idpersonaje, idcaracteristica, nombrecaracteristica);
+                PersonajeCaracteristicas.Add(cp);
+            }
+            Desconectar(Conexion);
+            return PersonajeCaracteristicas;
+        }
+
     }
 }
