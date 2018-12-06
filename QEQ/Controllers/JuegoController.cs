@@ -44,7 +44,7 @@ namespace QEQ.Controllers
             if (Modo == "Individual")
             {
                 //SELECCIONAR PERSONAJE
-                ListaPersonajes = Conexion.ListarPersonaje(ID);
+                ListaPersonajes = Conexion.ListarPersonaje();
                 Random rnd = new Random();
                 int r = rnd.Next(ListaPersonajes.Count);
                 Personaje PersonajeElegido = ListaPersonajes[r];
@@ -62,7 +62,7 @@ namespace QEQ.Controllers
         [HttpPost]
         public ActionResult SeleccionarPersonaje(int ID)
         {
-            ListaPersonajes = Conexion.ListarPersonaje(ID);
+            ListaPersonajes = Conexion.ListarPersonaje();
             ViewBag.ListaPersonajes = ListaPersonajes; 
             return View();
         }

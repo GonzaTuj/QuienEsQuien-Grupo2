@@ -11,7 +11,7 @@
     @Html.HiddenFor(x => x.IdPers)
 
     <p>Nombre: @Html.TextBoxFor((x => x.Nombre), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.Nombre)</p><br />
-    <p>IDCategoria: @Html.TextBoxFor((x => x.FkCategoria), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.FkCategoria)</p><br />
+    <p>IDCategoria: @Html.DropDownListFor(x => x.FkCategoria, new SelectList(ViewBag.personajes,"ID","Nombre")) @Html.ValidationMessageFor(x => x.FkCategoria)</p><br />
     if (@ViewBag.Accion == "Ver")
     {
         <input type="submit" value="Enviar" disabled />

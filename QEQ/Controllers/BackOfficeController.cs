@@ -76,7 +76,7 @@ namespace QEQ.Controllers
             var user = Session["Usuario"] as Usuario;
             if (user.EsAdmin)
             {
-                ViewBag.ListaPersonajes = Conexion.ListarPersonaje(0);
+                ViewBag.ListaPersonajes = Conexion.ListarPersonaje();
                 return View();
             }
             else return RedirectToAction("Index", "Home");
@@ -97,6 +97,7 @@ namespace QEQ.Controllers
             ViewBag.Accion = Accion;
             if (Accion == "Insertar")
             {
+                ViewBag.ListaCategorias = Conexion.ListarCategoriaC();
                 return View("FormCaracteristica");
             }
             if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
@@ -104,6 +105,7 @@ namespace QEQ.Controllers
                 if (Accion == "Ver")
                 {
                     ViewBag.Enabled = new { disabled = "disabled" };
+                    ViewBag.ListaCategorias = Conexion.ListarCategoriaC();
                     Caracteristica x = Conexion.ObtenerCaracteristica(ID);
                     return View("FormCaracteristica", x);
                 }
@@ -111,6 +113,7 @@ namespace QEQ.Controllers
                 if (Accion == "Editar")
                 {
                     Caracteristica x = Conexion.ObtenerCaracteristica(ID);
+                    ViewBag.ListaCategorias = Conexion.ListarCategoriaC();
                     return View("FormCaracteristica", x);
                 }
 
@@ -271,35 +274,24 @@ namespace QEQ.Controllers
 
         public ActionResult EdicionPersonaje(string Accion, int ID = 0)
         {
+            {
             ViewBag.Enabled = new { };
             ViewBag.Accion = Accion;
 
             if (Accion == "Insertar")
             {
                 Personaje p = new Personaje();
+                ViewBag.personajes = Conexion.ListarCategoriaP();
                 return View("FormPersonaje", p);
             }
-            if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
-            {
-
-                if (Accion == "Insertar")
-
-                if (Accion == "Ver")
-                {
-                    ViewBag.Enabled = new { disabled = "disabled" };
-                    Personaje o = Conexion.ObtenerPersonaje(ID);
-                    return View("FormCategoriaP", o);
-                }
-                if (Accion == "Eliminar")
-                {
-                    return View("FormPersonaje");
-                }
+            
                 if ((Accion == "Editar") || (Accion == "Eliminar") || (Accion == "Ver"))
                 {
                     if (Accion == "Ver")
                     {
                         ViewBag.Enabled = new { disabled = "disabled" };
                         Personaje p = Conexion.ObtenerPersonaje(ID);
+                        ViewBag.personajes = Conexion.ListarCategoriaP();
                         return View("FormPersonaje", p);
                     }
                     if (Accion == "Eliminar")
@@ -308,7 +300,7 @@ namespace QEQ.Controllers
                     }
                     if (Accion == "Editar")
                     {
-
+                        ViewBag.personajes = Conexion.ListarCategoriaP();
                         Personaje x = Conexion.ObtenerPersonaje(ID);
                         return View("FormPersonaje", x);
 

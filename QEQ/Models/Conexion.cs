@@ -89,7 +89,6 @@ namespace QEQ.Models
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "ObtenerCaracteristica";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            Consulta.Parameters.AddWithValue("@id", null);
             SqlDataReader dataReader = Consulta.ExecuteReader();
             while (dataReader.Read())
             {
@@ -171,7 +170,6 @@ namespace QEQ.Models
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "ObtenerCategoriaC";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            Consulta.Parameters.AddWithValue("@id", "");
             SqlDataReader dataReader = Consulta.ExecuteReader();
             while (dataReader.Read())
             {
@@ -245,7 +243,6 @@ namespace QEQ.Models
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "ObtenerCategoriaP";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            Consulta.Parameters.AddWithValue("@id", "");
             SqlDataReader dataReader = Consulta.ExecuteReader();
             while (dataReader.Read())
             {
@@ -312,15 +309,13 @@ namespace QEQ.Models
         }
 
         //PERSONAJES
-        public static List<Personaje> ListarPersonaje(int ID)
+        public static List<Personaje> ListarPersonaje()
         {
             List<Personaje> personajes = new List<Personaje>();
             SqlConnection Conexion = Conectar();
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "ObtenerPersonaje";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            Consulta.Parameters.AddWithValue("@id", "");
-            Consulta.Parameters.AddWithValue("@idcategoria", ID);
             SqlDataReader dataReader = Consulta.ExecuteReader();
             while (dataReader.Read())
             {
@@ -342,7 +337,7 @@ namespace QEQ.Models
             SqlCommand Consulta = Conexion.CreateCommand();
             Consulta.CommandText = "ObtenerPersonaje";
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            Consulta.Parameters.AddWithValue("@id", "");
+            Consulta.Parameters.AddWithValue("@id", ID);
             SqlDataReader dataReader = Consulta.ExecuteReader();
             while (dataReader.Read())
             {
@@ -377,6 +372,7 @@ namespace QEQ.Models
             Consulta.CommandType = System.Data.CommandType.StoredProcedure;
             Consulta.Parameters.AddWithValue("@id",p.IdPers);
             Consulta.Parameters.AddWithValue("@Nom", p.Nombre);
+            Consulta.Parameters.AddWithValue("@fkCateg", p.FkCategoria);
             int regsAfectados = Consulta.ExecuteNonQuery();
             return regsAfectados;
         }
